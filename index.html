@@ -1,0 +1,1618 @@
+<!doctype html><html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="NEXT Fitness: 213 mundtlige eksamensspørgsmål i afsætning D fordelt på 13 kapitler."><title>NEXT Fitness · Afsætning D · Fagbegreber</title><style>
+@font-face {
+  font-family: "Next Display";
+  src: url("https://vaelds.github.io/next-fitnessquiz/assets/fonts/URWGothic-Demi.otf") format("opentype");
+  font-display: swap;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Next Sans";
+  src: url("https://vaelds.github.io/next-fitnessquiz/assets/fonts/NimbusSans-Regular.otf") format("opentype");
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Next Sans";
+  src: url("https://vaelds.github.io/next-fitnessquiz/assets/fonts/NimbusSans-Bold.otf") format("opentype");
+  font-display: swap;
+  font-weight: 700;
+}
+
+:root {
+  --navy-950: #071326;
+  --navy-900: #0b1b35;
+  --navy-800: #142b4e;
+  --orange-500: #ef4b23;
+  --orange-600: #d93d16;
+  --cream-100: #f5f0e8;
+  --cream-50: #fbf8f3;
+  --white: #ffffff;
+  --mint-300: #bfe8e3;
+  --ink: #090d18;
+  --muted: #606875;
+  --line: #d9d6cf;
+  --success: #087a5b;
+  --success-bg: #e4f4ed;
+  --danger: #b72d32;
+  --danger-bg: #f8e7e7;
+  --page: 1280px;
+  --shadow-lg: 0 28px 80px rgb(7 19 38 / 15%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--cream-100);
+  color: var(--ink);
+  font-family: "Next Sans", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible,
+h1:focus-visible {
+  outline: 4px solid #4d9cf5;
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 1000;
+  top: 12px;
+  left: 12px;
+  padding: 12px 16px;
+  transform: translateY(-150%);
+  background: var(--white);
+  color: var(--navy-950);
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.page-width {
+  width: min(var(--page), calc(100% - 72px));
+  margin-inline: auto;
+}
+
+.screen[hidden] {
+  display: none !important;
+}
+
+.masthead {
+  position: relative;
+  z-index: 20;
+  min-height: 96px;
+  display: grid;
+  grid-template-columns: 190px 1fr auto;
+  align-items: center;
+  gap: 32px;
+  padding: 14px max(36px, calc((100vw - var(--page)) / 2));
+  background: var(--white);
+  border-bottom: 1px solid rgb(7 19 38 / 14%);
+}
+
+.brand {
+  display: inline-flex;
+  width: fit-content;
+}
+
+.brand img {
+  width: 158px;
+  height: auto;
+  display: block;
+}
+
+.masthead-meta {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border-left: 1px solid var(--line);
+  padding-left: 26px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.masthead-meta span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.masthead-meta strong {
+  font-size: 12px;
+}
+
+.header-cta,
+.quiet-button {
+  border: 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.header-cta {
+  min-height: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 34px;
+  padding: 0 18px 0 22px;
+  background: var(--navy-950);
+  color: var(--white);
+}
+
+.header-cta span {
+  color: var(--orange-500);
+  font-size: 20px;
+}
+
+.hero {
+  position: relative;
+  min-height: 760px;
+  height: calc(100vh - 96px);
+  max-height: 980px;
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+  background: var(--navy-950);
+  color: var(--white);
+}
+
+.hero-photo,
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-photo {
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  background:
+    linear-gradient(90deg, rgb(7 19 38 / 98%) 0%, rgb(7 19 38 / 88%) 37%, rgb(7 19 38 / 30%) 67%, rgb(7 19 38 / 6%) 100%),
+    linear-gradient(0deg, rgb(7 19 38 / 75%) 0%, transparent 42%);
+}
+
+.hero-shape {
+  position: absolute;
+  pointer-events: none;
+}
+
+.hero-shape-one {
+  top: -120px;
+  left: 43%;
+  width: 280px;
+  height: 560px;
+  transform: rotate(38deg);
+  border: 1px solid rgb(191 232 227 / 34%);
+}
+
+.hero-shape-two {
+  right: -90px;
+  bottom: 80px;
+  width: 260px;
+  height: 260px;
+  background: var(--orange-500);
+  clip-path: polygon(0 0, 100% 50%, 0 100%, 25% 50%);
+  opacity: .88;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 98px;
+}
+
+.overline {
+  margin: 0 0 22px;
+  color: var(--orange-500);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.overline span {
+  display: inline-block;
+  margin-right: 12px;
+  padding: 7px 10px 6px;
+  background: var(--orange-500);
+  color: var(--white);
+}
+
+.overline-light {
+  color: var(--mint-300);
+}
+
+.overline-light span {
+  background: var(--mint-300);
+  color: var(--navy-950);
+}
+
+.hero h1,
+.process h2,
+.result-hero h1 {
+  margin: 0;
+  font-family: "Next Display", "Arial Black", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 900px;
+  font-size: clamp(64px, 7.7vw, 124px);
+  line-height: .82;
+  letter-spacing: -.055em;
+}
+
+.hero h1 em {
+  color: var(--orange-500);
+  font-style: normal;
+}
+
+.hero-lead {
+  max-width: 670px;
+  margin: 34px 0 0;
+  color: #e4e9f0;
+  font-size: clamp(18px, 1.55vw, 23px);
+  line-height: 1.55;
+}
+
+.hero-actions {
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.button {
+  min-height: 58px;
+  min-width: 220px;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 16px 21px 15px 24px;
+  cursor: pointer;
+  color: var(--white);
+  font-weight: 700;
+  letter-spacing: .075em;
+  text-transform: uppercase;
+  transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+}
+
+.button span {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.button:hover:not(:disabled) {
+  transform: translate(4px, 4px);
+}
+
+.button-primary {
+  background: var(--orange-500);
+  box-shadow: 9px 9px 0 var(--mint-300);
+}
+
+.button-primary:hover:not(:disabled) {
+  background: var(--orange-600);
+  box-shadow: 5px 5px 0 var(--mint-300);
+}
+
+.button-dark {
+  background: var(--navy-950);
+}
+
+.button-dark:hover:not(:disabled) {
+  background: var(--navy-800);
+}
+
+.button-light {
+  background: var(--white);
+  color: var(--navy-950);
+  box-shadow: 9px 9px 0 var(--orange-500);
+}
+
+.button-light:hover:not(:disabled) {
+  box-shadow: 5px 5px 0 var(--orange-500);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: .48;
+  box-shadow: none;
+}
+
+.text-link {
+  padding: 10px 0 8px;
+  color: var(--white);
+  border-bottom: 2px solid var(--orange-500);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.text-link span {
+  margin-left: 10px;
+  color: var(--orange-500);
+}
+
+.hero-stats {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 98px;
+  display: grid;
+  grid-template-columns: 150px 150px 170px 1fr;
+  align-items: stretch;
+  background: var(--cream-50);
+  color: var(--navy-950);
+}
+
+.hero-stats > div {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  padding: 25px 22px;
+  border-right: 1px solid var(--line);
+}
+
+.hero-stats strong {
+  font-family: "Next Display", sans-serif;
+  font-size: 34px;
+}
+
+.hero-stats span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.hero-stats p {
+  margin: 0;
+  align-self: center;
+  justify-self: end;
+  padding: 25px 30px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.overview {
+  padding-block: 126px 138px;
+}
+
+.section-intro {
+  display: grid;
+  grid-template-columns: minmax(360px, .92fr) 1.08fr;
+  column-gap: 80px;
+  align-items: end;
+}
+
+.section-intro .overline {
+  grid-column: 1 / -1;
+}
+
+.section-intro h2,
+.result-heading h2 {
+  margin: 0;
+  font-family: "Next Display", sans-serif;
+  font-size: clamp(46px, 5.4vw, 82px);
+  line-height: .92;
+  letter-spacing: -.05em;
+  text-transform: uppercase;
+}
+
+.section-intro > p:last-child {
+  max-width: 610px;
+  margin: 0;
+  padding-bottom: 5px;
+  color: #3e4550;
+  font-size: 19px;
+  line-height: 1.65;
+}
+
+.topic-grid {
+  margin-top: 76px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 2px solid var(--navy-950);
+  border-bottom: 2px solid var(--navy-950);
+}
+
+.topic-grid article {
+  position: relative;
+  min-height: 330px;
+  padding: 28px 28px 32px;
+  border-right: 1px solid var(--line);
+  background: var(--cream-50);
+  transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+
+.topic-grid article:last-child {
+  border-right: 0;
+}
+
+.topic-grid article:hover {
+  z-index: 2;
+  transform: translateY(-8px);
+  background: var(--navy-950);
+  color: var(--white);
+}
+
+.topic-index {
+  color: var(--orange-500);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.topic-icon {
+  width: 76px;
+  height: 76px;
+  margin-top: 42px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--navy-950);
+  background: var(--mint-300);
+  color: var(--navy-950);
+  font-family: "Next Display", sans-serif;
+  font-size: 29px;
+}
+
+.topic-grid h3 {
+  margin: 32px 0 10px;
+  font-family: "Next Display", sans-serif;
+  font-size: 28px;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+}
+
+.topic-grid p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.topic-grid article:hover p {
+  color: #d9e0e9;
+}
+
+.process {
+  position: relative;
+  overflow: hidden;
+  padding-block: 118px;
+  background: var(--navy-950) url("https://vaelds.github.io/next-fitnessquiz/assets/images/next-pattern-dark.png") center / cover;
+  color: var(--white);
+}
+
+.process::after {
+  content: "";
+  position: absolute;
+  right: -80px;
+  bottom: -100px;
+  width: 320px;
+  height: 320px;
+  background: var(--orange-500);
+  clip-path: polygon(0 0, 100% 50%, 0 100%, 24% 50%);
+}
+
+.process-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: .95fr 1.05fr;
+  gap: 80px;
+}
+
+.process h2 {
+  font-size: clamp(50px, 5.4vw, 82px);
+  line-height: .92;
+  letter-spacing: -.05em;
+}
+
+.process-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgb(255 255 255 / 50%);
+}
+
+.process-list li {
+  min-height: 100px;
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  align-items: center;
+  gap: 18px;
+  border-bottom: 1px solid rgb(255 255 255 / 24%);
+}
+
+.process-list li > b {
+  color: var(--orange-500);
+  font-size: 12px;
+}
+
+.process-list li span {
+  display: grid;
+  gap: 7px;
+}
+
+.process-list strong {
+  font-family: "Next Display", sans-serif;
+  font-size: 23px;
+  text-transform: uppercase;
+}
+
+.process-list small {
+  color: #bcc7d5;
+  font-size: 15px;
+}
+
+.process .button {
+  grid-column: 2;
+  justify-self: start;
+}
+
+.quiz-shell {
+  min-height: calc(100vh - 96px);
+  padding-bottom: 100px;
+  background:
+    linear-gradient(120deg, transparent 0 75%, rgb(7 19 38 / 5%) 75% 100%),
+    var(--cream-100);
+}
+
+.quiz-topbar {
+  background: var(--navy-950);
+  color: var(--white);
+}
+
+.quiz-topbar-inner {
+  min-height: 78px;
+  display: grid;
+  grid-template-columns: 230px 1fr auto;
+  align-items: center;
+  gap: 30px;
+}
+
+.quiz-topbar-inner > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+#question-counter,
+#question-category {
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+#question-category {
+  padding-left: 18px;
+  border-left: 1px solid rgb(255 255 255 / 34%);
+  color: var(--mint-300);
+}
+
+.progress-track {
+  height: 7px;
+  overflow: hidden;
+  background: rgb(255 255 255 / 16%);
+}
+
+.progress-track span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--orange-500);
+  transition: width .28s ease;
+}
+
+.quiet-button {
+  padding: 12px 0 10px;
+  background: transparent;
+  color: var(--white);
+  border-bottom: 2px solid var(--orange-500);
+  font-size: 11px;
+}
+
+.quiz-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 54px;
+  padding-top: 68px;
+}
+
+.quiz-rail {
+  padding-top: 8px;
+}
+
+.rail-kicker {
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.quiz-rail ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--navy-950);
+}
+
+.quiz-rail li {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.quiz-rail li.active {
+  color: var(--navy-950);
+}
+
+.quiz-rail li.active::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  margin-right: 2px;
+  background: var(--orange-500);
+}
+
+.quiz-rail li span {
+  margin-left: auto;
+  color: var(--orange-500);
+}
+
+.rail-note {
+  margin-top: 38px;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 11px;
+  align-items: start;
+}
+
+.rail-note > span {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--navy-950);
+  color: var(--white);
+  font-family: serif;
+  font-weight: 700;
+}
+
+.rail-note p {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.question-panel {
+  min-height: 640px;
+  padding: clamp(42px, 5.2vw, 72px);
+  background: var(--white);
+  border-top: 10px solid var(--navy-950);
+  box-shadow: var(--shadow-lg);
+}
+
+.question-panel > h1 {
+  max-width: 910px;
+  margin: 0 0 42px;
+  font-family: "Next Display", sans-serif;
+  font-size: clamp(38px, 4vw, 62px);
+  line-height: 1.02;
+  letter-spacing: -.045em;
+}
+
+.answer-list {
+  display: grid;
+  gap: 13px;
+}
+
+.answer-option {
+  width: 100%;
+  min-height: 72px;
+  display: grid;
+  grid-template-columns: 50px minmax(0, 1fr) 38px;
+  align-items: center;
+  gap: 17px;
+  padding: 10px 16px 10px 10px;
+  border: 2px solid #d6d8dc;
+  background: var(--white);
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  font-size: 17px;
+  line-height: 1.35;
+  transition: border-color .15s ease, background .15s ease, transform .15s ease;
+}
+
+.answer-option:hover:not(:disabled) {
+  transform: translateX(5px);
+  border-color: var(--navy-950);
+}
+
+.answer-option:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.answer-letter {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: var(--cream-100);
+  font-family: "Next Display", sans-serif;
+  font-size: 16px;
+}
+
+.answer-state {
+  text-align: center;
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.answer-option.selected {
+  border-color: var(--navy-950);
+  background: #edf2f8;
+}
+
+.answer-option.selected .answer-letter {
+  background: var(--navy-950);
+  color: var(--white);
+}
+
+.answer-option.correct {
+  border-color: var(--success);
+  background: var(--success-bg);
+}
+
+.answer-option.correct .answer-letter {
+  background: var(--success);
+  color: var(--white);
+}
+
+.answer-option.wrong {
+  border-color: var(--danger);
+  background: var(--danger-bg);
+}
+
+.answer-option.wrong .answer-letter {
+  background: var(--danger);
+  color: var(--white);
+}
+
+.question-action {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.question-action p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.feedback-panel {
+  margin-top: 30px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 58px 1fr auto;
+  align-items: center;
+  gap: 20px;
+  border-left: 8px solid;
+}
+
+.feedback-panel.is-correct {
+  border-color: var(--success);
+  background: var(--success-bg);
+}
+
+.feedback-panel.is-wrong {
+  border-color: var(--danger);
+  background: var(--danger-bg);
+}
+
+.feedback-symbol {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.is-correct .feedback-symbol {
+  background: var(--success);
+}
+
+.is-wrong .feedback-symbol {
+  background: var(--danger);
+}
+
+.feedback-copy > p:first-child {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.feedback-copy h2 {
+  margin: 0 0 7px;
+  font-family: "Next Display", sans-serif;
+  font-size: 27px;
+  text-transform: uppercase;
+}
+
+.feedback-copy > p:last-child {
+  max-width: 610px;
+  margin: 0;
+  color: #3f4650;
+  line-height: 1.55;
+}
+
+.feedback-panel .button {
+  min-width: 205px;
+  box-shadow: none;
+}
+
+.result-shell {
+  background: var(--cream-100);
+}
+
+.result-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: 92px;
+  background: var(--navy-950) url("https://vaelds.github.io/next-fitnessquiz/assets/images/next-pattern-dark.png") center / cover;
+  color: var(--white);
+}
+
+.result-hero::after {
+  content: "";
+  position: absolute;
+  right: -80px;
+  bottom: -40px;
+  width: 360px;
+  height: 360px;
+  background: var(--orange-500);
+  clip-path: polygon(0 0, 100% 50%, 0 100%, 24% 50%);
+}
+
+.result-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  align-items: center;
+  gap: 76px;
+}
+
+.result-hero h1 {
+  max-width: 800px;
+  font-size: clamp(58px, 7vw, 102px);
+  line-height: .86;
+  letter-spacing: -.055em;
+}
+
+.result-hero-grid > div:first-child > p:not(.overline) {
+  max-width: 680px;
+  margin: 30px 0 35px;
+  color: #dce4ee;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.score-card {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 10px solid var(--mint-300);
+  border-radius: 50%;
+  background: rgb(7 19 38 / 72%);
+}
+
+.score-card > span {
+  margin-bottom: 9px;
+  color: var(--mint-300);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.score-card strong {
+  color: var(--orange-500);
+  font-family: "Next Display", sans-serif;
+  font-size: 112px;
+  line-height: .78;
+}
+
+.score-card b {
+  margin-top: 13px;
+  font-size: 23px;
+  text-transform: uppercase;
+}
+
+.score-card small {
+  margin-top: 12px;
+  color: var(--mint-300);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.result-content {
+  padding-block: 112px 130px;
+}
+
+.result-heading {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: end;
+  gap: 30px;
+  margin-bottom: 42px;
+}
+
+.result-heading .overline {
+  margin: 0;
+}
+
+.result-heading h2 {
+  font-size: clamp(44px, 5vw, 72px);
+}
+
+.category-breakdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.category-card {
+  min-height: 170px;
+  padding: 24px;
+  background: var(--white);
+  border-top: 7px solid var(--navy-950);
+  box-shadow: 0 12px 35px rgb(7 19 38 / 7%);
+}
+
+.category-card header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.category-card h3 {
+  margin: 0;
+  font-family: "Next Display", sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+
+.category-card strong {
+  color: var(--orange-500);
+  font-size: 19px;
+}
+
+.category-track {
+  height: 8px;
+  margin-top: 28px;
+  overflow: hidden;
+  background: #e3e0da;
+}
+
+.category-track span {
+  display: block;
+  height: 100%;
+  background: var(--orange-500);
+}
+
+.category-card p {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.review-section {
+  margin-top: 108px;
+}
+
+.answer-review {
+  border-top: 2px solid var(--navy-950);
+}
+
+.answer-review details {
+  background: rgb(255 255 255 / 48%);
+  border-bottom: 1px solid #c6c6c1;
+}
+
+.answer-review summary {
+  min-height: 82px;
+  padding: 14px 18px;
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 28px;
+  align-items: center;
+  gap: 17px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.answer-review summary::-webkit-details-marker {
+  display: none;
+}
+
+.review-status {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--white);
+  font-weight: 700;
+}
+
+.review-status.correct {
+  background: var(--success);
+}
+
+.review-status.wrong {
+  background: var(--danger);
+}
+
+.review-title small {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.review-title strong {
+  line-height: 1.35;
+}
+
+.review-plus {
+  font-size: 28px;
+  transition: transform .18s ease;
+}
+
+.answer-review details[open] .review-plus {
+  transform: rotate(45deg);
+}
+
+.review-body {
+  padding: 0 72px 28px 75px;
+}
+
+.review-body p {
+  margin: 11px 0;
+  line-height: 1.55;
+}
+
+.review-body label {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--orange-500);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.review-explanation {
+  padding-top: 13px;
+  border-top: 1px solid var(--line);
+  color: #414852;
+}
+
+.site-footer {
+  background: var(--white);
+  border-top: 1px solid var(--line);
+}
+
+.footer-grid {
+  min-height: 190px;
+  display: grid;
+  grid-template-columns: 190px 1fr auto;
+  align-items: center;
+  gap: 46px;
+}
+
+.footer-grid img {
+  width: 158px;
+}
+
+.footer-grid p {
+  max-width: 680px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.footer-grid > span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1050px) {
+  .page-width {
+    width: min(var(--page), calc(100% - 44px));
+  }
+
+  .masthead {
+    padding-inline: 22px;
+  }
+
+  .hero h1 {
+    font-size: clamp(62px, 9.4vw, 100px);
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(90deg, rgb(7 19 38 / 98%) 0%, rgb(7 19 38 / 85%) 50%, rgb(7 19 38 / 22%) 100%),
+      linear-gradient(0deg, rgb(7 19 38 / 80%) 0%, transparent 48%);
+  }
+
+  .section-intro {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .topic-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .topic-grid article:nth-child(2) {
+    border-right: 0;
+  }
+
+  .topic-grid article:nth-child(-n+2) {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .quiz-layout {
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 30px;
+  }
+
+  .feedback-panel {
+    grid-template-columns: 54px 1fr;
+  }
+
+  .feedback-panel .button {
+    grid-column: 1 / -1;
+    justify-self: end;
+  }
+}
+
+@media (max-width: 800px) {
+  .masthead {
+    grid-template-columns: 150px 1fr auto;
+    min-height: 82px;
+  }
+
+  .brand img {
+    width: 132px;
+  }
+
+  .masthead-meta span {
+    display: none;
+  }
+
+  .masthead-meta {
+    padding-left: 18px;
+  }
+
+  .header-cta {
+    min-width: 48px;
+    padding: 0 15px;
+    gap: 0;
+    font-size: 0;
+  }
+
+  .header-cta span {
+    font-size: 23px;
+  }
+
+  .hero {
+    min-height: 800px;
+    height: calc(100vh - 82px);
+  }
+
+  .hero-photo {
+    object-position: 62% center;
+  }
+
+  .hero-content {
+    padding-bottom: 178px;
+  }
+
+  .hero h1 {
+    font-size: clamp(57px, 11vw, 86px);
+  }
+
+  .hero-lead {
+    max-width: 560px;
+  }
+
+  .hero-stats {
+    width: calc(100% - 44px);
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero-stats p {
+    display: none;
+  }
+
+  .hero-stats > div {
+    justify-content: center;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: 55px;
+  }
+
+  .process .button {
+    grid-column: 1;
+  }
+
+  .quiz-topbar-inner {
+    grid-template-columns: 1fr auto;
+  }
+
+  .progress-track {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-bottom: 14px;
+  }
+
+  .quiz-layout {
+    grid-template-columns: 1fr;
+    padding-top: 34px;
+  }
+
+  .quiz-rail {
+    display: none;
+  }
+
+  .result-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .score-card {
+    width: min(330px, 100%);
+    justify-self: center;
+  }
+
+  .category-breakdown {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .result-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 160px 1fr;
+  }
+
+  .footer-grid > span {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .page-width {
+    width: calc(100% - 28px);
+  }
+
+  .masthead {
+    grid-template-columns: 120px 1fr 46px;
+    gap: 12px;
+    min-height: 74px;
+    padding-inline: 14px;
+  }
+
+  .brand img {
+    width: 112px;
+  }
+
+  .masthead-meta {
+    min-height: 32px;
+    padding-left: 12px;
+  }
+
+  .masthead-meta strong {
+    font-size: 9px;
+  }
+
+  .header-cta {
+    min-height: 44px;
+    min-width: 44px;
+    padding-inline: 12px;
+  }
+
+  .hero {
+    min-height: 760px;
+    height: auto;
+  }
+
+  .hero-photo {
+    object-position: 67% center;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(90deg, rgb(7 19 38 / 97%) 0%, rgb(7 19 38 / 78%) 100%),
+      linear-gradient(0deg, rgb(7 19 38 / 90%) 0%, transparent 50%);
+  }
+
+  .hero-content {
+    padding-block: 78px 195px;
+  }
+
+  .hero h1 {
+    font-size: clamp(48px, 15vw, 68px);
+    line-height: .86;
+  }
+
+  .hero-lead {
+    margin-top: 25px;
+    font-size: 17px;
+  }
+
+  .hero-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .hero-stats {
+    min-height: 120px;
+    width: calc(100% - 28px);
+  }
+
+  .hero-stats > div {
+    align-items: center;
+    flex-direction: column;
+    gap: 2px;
+    padding-inline: 6px;
+    text-align: center;
+  }
+
+  .hero-stats strong {
+    font-size: 28px;
+  }
+
+  .hero-stats span {
+    font-size: 9px;
+  }
+
+  .overview {
+    padding-block: 88px;
+  }
+
+  .section-intro h2,
+  .result-heading h2 {
+    font-size: 48px;
+  }
+
+  .section-intro > p:last-child {
+    font-size: 17px;
+  }
+
+  .topic-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topic-grid article,
+  .topic-grid article:nth-child(2) {
+    min-height: 285px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .process {
+    padding-block: 86px;
+  }
+
+  .process h2 {
+    font-size: 49px;
+  }
+
+  .process-list li {
+    grid-template-columns: 50px 1fr;
+  }
+
+  .quiz-topbar-inner {
+    width: calc(100% - 28px);
+  }
+
+  .question-panel {
+    min-height: 0;
+    padding: 30px 17px;
+  }
+
+  .question-panel > h1 {
+    margin-bottom: 30px;
+    font-size: 34px;
+  }
+
+  .answer-option {
+    min-height: 66px;
+    grid-template-columns: 42px minmax(0, 1fr) 28px;
+    gap: 11px;
+    padding-right: 8px;
+    font-size: 15px;
+  }
+
+  .answer-letter {
+    width: 40px;
+    height: 40px;
+  }
+
+  .question-action {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .feedback-panel {
+    grid-template-columns: 1fr;
+    padding: 19px;
+  }
+
+  .feedback-panel .button {
+    grid-column: 1;
+  }
+
+  .result-hero {
+    padding-block: 70px;
+  }
+
+  .result-hero h1 {
+    font-size: 57px;
+  }
+
+  .score-card strong {
+    font-size: 92px;
+  }
+
+  .result-content {
+    padding-block: 86px 100px;
+  }
+
+  .category-breakdown {
+    grid-template-columns: 1fr;
+  }
+
+  .review-section {
+    margin-top: 82px;
+  }
+
+  .answer-review summary {
+    grid-template-columns: 36px minmax(0, 1fr) 22px;
+    gap: 11px;
+    padding-inline: 7px;
+  }
+
+  .review-body {
+    padding: 0 12px 25px 54px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-block: 42px;
+  }
+
+  .footer-grid p,
+  .footer-grid > span {
+    grid-column: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
+
+body{background:#f5f0e8}.masthead{position:relative}.hero{min-height:590px;height:auto;max-height:none;padding-block:75px 40px}.hero-content{padding-bottom:42px}.hero h1{font-size:clamp(48px,7vw,100px)}.hero-lead{max-width:760px}.hero-stats{position:relative;bottom:auto;padding-top:25px;padding-bottom:10px}.intro-small{font-size:14px;letter-spacing:.08em;text-transform:uppercase}.chapter-section{padding-block:60px 100px}.chapter-intro{max-width:760px;margin-bottom:30px}.chapter-intro h2{font-family:"Next Display",Arial,sans-serif;font-size:clamp(32px,4.5vw,58px);text-transform:uppercase;letter-spacing:-.04em;margin:6px 0 15px}.chapter-intro p{font-size:18px;color:#596273}.chapter-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.chapter-card{background:white;border:1px solid #d9d6cf;padding:27px;display:flex;flex-direction:column;min-height:205px;gap:13px;box-shadow:0 10px 30px #0713260c}.chapter-num{color:#ef4b23;font-weight:700;letter-spacing:.12em;font-size:12px}.chapter-card h3{margin:0;font-size:21px;line-height:1.13;font-family:"Next Display",Arial,sans-serif}.chapter-card p{margin:0;color:#5d6675;line-height:1.5}.chapter-card .button{margin-top:auto;min-width:0;min-height:45px;padding:10px 15px;font-size:12px}.mini-progress{height:5px;background:#e9e8e5;margin-top:8px}.mini-progress span{display:block;height:100%;background:#ef4b23}.practice-screen{padding:38px 0 110px}.practice-top{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}.practice-top .quiet-button{background:transparent;color:#0b1b35;padding:12px;cursor:pointer}.practice-meta{text-transform:uppercase;font-size:12px;color:#596273;font-weight:bold;letter-spacing:.1em}.progress-track{height:7px;background:#d9d6cf;margin:25px 0 30px}.progress-track>span{display:block;height:100%;background:#ef4b23;transition:width .2s}.exam-card{background:white;padding:clamp(24px,5vw,60px);border:1px solid #ddd7cf;box-shadow:0 20px 60px #0713260c;max-width:950px}.case{color:#0b1b35;font-size:15px;line-height:1.7;border-left:4px solid #ef4b23;padding-left:18px;background:#fcf8f2;padding-block:10px;margin:20px 0 22px}.exam-card h2{font-size:clamp(25px,3.4vw,40px);line-height:1.2;max-width:800px;letter-spacing:-.02em}.choices{display:grid;gap:12px;margin:27px 0}.choice{width:100%;text-align:left;display:flex;gap:16px;align-items:flex-start;padding:17px 20px;background:#fff;border:2px solid #d9d6cf;cursor:pointer;color:#071326;font-size:16px;line-height:1.45}.choice strong{color:#ef4b23}.choice:hover:not(:disabled){border-color:#ef4b23}.choice.correct{border-color:#078266;background:#e8f6ee}.choice.wrong{border-color:#bb3434;background:#faebeb}.choice:disabled{cursor:default}.feedback{padding:22px;background:#f5f0e8;border-left:4px solid #ef4b23;line-height:1.65}.feedback p{margin:7px 0}.feedback h3{margin:0 0 6px}.practice-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}.practice-actions .button{min-width:175px}.practice-actions button:disabled{opacity:.35;cursor:default}.oral-box{margin-top:14px;padding:15px 20px;background:#f0f6f6;border-left:4px solid #3b8d90}.result-panel{background:white;padding:clamp(24px,5vw,65px);max-width:850px}.result-panel h2{font-size:clamp(38px,6vw,68px);font-family:"Next Display",Arial,sans-serif;line-height:1}.result-panel p{line-height:1.65}.result-scores{display:flex;gap:20px;flex-wrap:wrap;margin:23px 0}.result-scores>div{background:#f5f0e8;padding:22px 28px;min-width:150px}.result-scores strong{display:block;font-size:36px}.review-list{padding-left:22px;line-height:1.7}.chapter-picker{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:30px 0}.chapter-picker select{padding:12px;border:1px solid #b9b8b8;max-width:100%}.footnote{font-size:13px;color:#667080;margin-top:30px}.footer-area{padding:35px 0 55px;color:#657080;border-top:1px solid #d9d6cf}@media(max-width:980px){.chapter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.masthead{display:flex;flex-wrap:wrap;padding:15px 24px}.masthead-meta{display:none}.hero{padding-block:55px 35px;min-height:0}}@media(max-width:640px){.page-width{width:calc(100% - 34px)}.chapter-grid{grid-template-columns:1fr}.hero h1{font-size:clamp(46px,13vw,70px)}.hero-content{padding-bottom:10px}.hero-stats{gap:15px;flex-wrap:wrap}.chapter-section{padding-block:35px 65px}.practice-screen{padding-top:20px}.masthead .header-cta{min-height:42px;font-size:11px;padding:10px 12px}.brand img{width:122px}.choice{font-size:15px;padding:15px}.exam-card h2{font-size:25px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style></head><body>
+<a href="#main-content" class="skip-link">Gå til indhold</a>
+<header class="masthead"><a class="brand" href="#" id="logo"><img src="https://vaelds.github.io/next-fitnessquiz/assets/images/next-logo.png" alt="NEXT Uddannelse København"></a><div class="masthead-meta"><span>Fitnessuddannelsen</span><strong>Afsætning D · Fagbegreber</strong></div><button class="header-cta" id="header-home">Alle emner <span>↗</span></button></header>
+<main id="main-content"><div id="home"><section class="hero"><img class="hero-photo" src="https://vaelds.github.io/next-fitnessquiz/assets/images/hero-fitness.png" alt="Træning i fitnesscenter"><div class="hero-overlay"></div><div class="hero-shape hero-shape-one"></div><div class="hero-shape hero-shape-two"></div><div class="hero-content page-width"><p class="overline"><span>Quiz</span> Fitness · Afsætning D · Eksamensforberedelse</p><h1>Klar til<br><em>mundtlig</em><br>eksamen?</h1><p class="hero-lead">213 spørgsmål fordelt på 13 selvstændige emner. Øv fagbegreberne ét kapitel ad gangen, få facit med forklaring og træn et ekstra mundtligt opfølgende spørgsmål.</p><div class="hero-actions"><a class="button button-primary" href="#chapter-list">Vælg emne <span>→</span></a></div></div><div class="hero-stats page-width"><div><strong>213</strong><span>spørgsmål</span></div><div><strong>13</strong><span>emner</span></div><div><strong>01</strong><span>rigtigt svar</span></div><p>Udarbejdet til eksamensøvelse i NEXT Fitness</p></div></section><section class="page-width chapter-section" id="chapter-list"><div class="chapter-intro"><p class="overline"><span>01</span> Vælg eksamensområde</p><h2>Fra teori til<br>eksamensviden</h2><p>Alle områder i det vedlagte begrebsdokument er opdelt efter kapitel. Du kan genstarte en test eller fortsætte et andet område. Dit resultat gemmes i denne browser.</p></div><div class="chapter-grid" id="chapter-grid"></div><p class="footnote">Spørgsmålene er studiespørgsmål inspireret af en mundtlig eksamenssituation, ikke officielle eksamensspørgsmål. Regler i lovgivningskapitlet er forenklet til undervisningsformål og bør kontrolleres mod gældende lovgivning.</p></section></div>
+<section class="practice-screen page-width" id="practice" hidden><div class="practice-top"><button class="quiet-button" id="back">← Alle emner</button><div class="practice-meta" id="practice-meta"></div></div><div class="progress-track" aria-label="Fremdrift"><span id="bar"></span></div><div id="question-slot" class="exam-card"></div><div class="practice-actions"><button class="button button-primary" id="next" disabled>Næste spørgsmål <span>→</span></button><button class="quiet-button" id="reset">Begynd emnet forfra</button></div></section>
+<section class="practice-screen page-width" id="result" hidden><div class="result-panel"><p class="overline"><span>Resultat</span> Kapitel gennemført</p><h2 id="result-title"></h2><div id="result-scores" class="result-scores"></div><p id="result-summary"></p><h3>Begreber du med fordel kan repetere</h3><ol id="review" class="review-list"></ol><div class="practice-actions"><button class="button button-primary" id="retry">Prøv igen <span>→</span></button><button class="quiet-button" id="result-home">Vælg andet emne</button></div></div></section></main><footer class="page-width footer-area">NEXT Fitness · Afsætning D · Selvstændigt undervisningsprojekt · Baseret på “Fagbegreber Afsætning V2”</footer>
+<script>const CHAPTERS=[{"id":1,"title":"Forretningsmodeller","topics":[["Forretningsmodel","Hvordan en virksomhed skaber og indtjener værdi"],["Traditionelle forretningsmodeller","Produktion, handel og service"],["Produktionsvirksomhed","Fremstiller fysiske varer"],["Handelsvirksomhed","Indkøber varer til videresalg"],["Grossist","Sælger varer til andre virksomheder"],["Detailhandel","Sælger varer til slutforbrugere"],["Servicevirksomhed","Leverer primært tjenesteydelser"],["Digitale forretningsmodeller","Digital teknologi er central for værdiskabelsen"],["Den digitale købmand","Købmand der sælger gennem digitale kanaler"],["Webshoppen","Onlinebutik med bestilling af varer og ydelser"],["Den digitale producent","Fremstiller digitale produkter eller indhold"],["Softwareproducenten","Udvikler og sælger software"],["Den digitale platformsbygger","Skaber en platform, der forbinder brugergrupper"],["App-opfinderen","Udvikler og udbyder apps"],["Wiki-skaberen","Organiserer viden, som brugere bidrager til digitalt"],["Kombination af forretningsmodeller","Flere indtjenings- og leverancemodeller anvendes samtidigt"],["Abonnementsordninger","Kunden betaler løbende for adgang eller leverancer"]]},{"id":2,"title":"Forretningskoncept","topics":[["Forretningskoncept","Samlet beskrivelse af idé, tilbud og målgruppe"],["Idé","Grundlæggende tanke om et behov virksomheden vil opfylde"],["Vision","Det fremtidige ideal virksomheden stræber mod"],["Delmål","Mindre mål der understøtter det overordnede mål"],["Operationelle mål","Konkrete mål for den daglige drift"],["Værdier","Principper der styrer virksomhedens handlinger"],["Profil","Den identitet virksomheden ønsker at signalere"]]},{"id":3,"title":"SWOT","topics":[["SWOT","Analyse af interne styrker og svagheder og eksterne muligheder og trusler"],["Styrker","Interne positive forhold"],["Svagheder","Interne negative forhold"],["Muligheder","Eksterne forhold virksomheden kan udnytte"],["Trusler","Eksterne forhold der kan skade virksomheden"]]},{"id":4,"title":"Markeder og B2B","topics":[["Konsumentmarkedet","Private kunder køber til eget forbrug"],["Producentmarkedet","Virksomheder køber til drift og produktion"],["Købemotiver på B2B","Økonomiske og driftsmæssige grunde til indkøb"],["Købstyper på B2B","Klassifikation efter nyt køb eller gentagelse"],["Nykøb","Virksomheden køber noget nyt og undersøger alternativer"],["Modificeret genkøb","Virksomheden genbestiller med ændrede krav"],["Rutinekøb","Virksomheden gentager et velkendt indkøb"],["Købscenter","Flere deltagere har roller i en virksomheds indkøb"],["Transaktionsmarkedsføring","Fokus på det enkelte salg"],["Relationsmarkedsføring","Fokus på længerevarende kunderelationer"],["Delmarkeder","Underopdeling af det samlede marked"],["Det industrielle marked","Virksomheders indkøb til produktion"],["Mellemhandlermarkedet","Virksomheder køber for at videresælge"],["Det offentlige marked","Offentlige organisationer som købere"],["Valgkriterier","Forhold som pris, kvalitet og levering i et leverandørvalg"]]},{"id":5,"title":"Lovgivning","topics":[["Købeloven","Regulerer blandt andet levering, mangler og parternes retsmidler"],["Forbrugerkøb","Privat forbruger køber fra erhvervsdrivende"],["Handelskøb","Erhvervsdrivende køber som led i deres erhverv"],["Civilkøb","Køb der hverken er forbrugerkøb eller handelskøb"],["Rette kvalitet","Varen svarer til det aftalte"],["Væsentlige mangler","Alvorlige mangler der kan berettige ophævelse"],["Uvæsentlige mangler","Mindre mangler der normalt ikke berettiger ophævelse"],["Rette tid","Levering skal ske til aftalt tid"],["Leveringstid","Tidspunktet for overgivelse af varen"],["Rette sted","Levering skal ske på aftalt sted"],["Leveringssted","Sted hvor varen skal overgives"],["Rette pris","Prisen skal svare til aftalen"],["Afslag i prisen","Forholdsmæssig reduktion af betaling ved relevant mangel"],["Ophævelse af købet","Aftalen bringes til ophør og ydelser tilbageføres"],["Reklamationsret","Mulighed for at klage over mangel, normalt i to år ved forbrugerkøb"],["Formodningsreglen","Mangler i det første år formodes som udgangspunkt at have været til stede ved levering"],["Forbrugeraftaleloven","Regulerer blandt andet visse fjernsalgsaftaler og fortrydelse"],["Uanmodet henvendelse","Henvendelse til forbruger uden forudgående anmodning, underlagt forbud eller samtykkekrav"],["Fjernsalg","Handel uden fysisk møde under organiseret fjernsalg"],["Oplysningspligt","Pligt til at give relevante aftaleoplysninger før køb"],["Et varigt medium","Information kan opbevares og gengives uændret, eksempelvis e-mail"],["Fortrydelsesret","Ret til at træde tilbage fra visse aftaler"],["Fortrydelsesfrist","Normalt 14 dage for fjernsalg omfattet af reglerne"]]},{"id":6,"title":"Segmentering og målgrupper","topics":[["Konsumentenhed","Person eller husstand betragtet som købende enhed"],["Segmentering","Opdeling af et marked i kundegrupper"],["Segmenter","Kundegrupper med fælles karakteristika"],["Målgruppe","Det segment virksomheden vil henvende sig til"],["Segmenteringsprocessen","Fremgangsmåde for opdeling, vurdering og valg"],["Segmenteringsvariabler","Kendetegn man opdeler efter"],["Sociodemografiske variabler","Alder, indkomst, uddannelse og lignende"],["Adfærdsmæssige variabler","Købsfrekvens, loyalitet og anvendelse"],["Psykografiske variabler","Livsstil, interesser og værdier"],["Online segmenteringsvariabler","Klik, søgninger og anden digital adfærd"],["SMOK","Segmentvurdering af størrelse og vækst, bearbejdningsmulighed, omkostning og konkurrence"],["Livsstilsmodeller","Inddeling efter livsværdier og holdninger"],["Minerva-modellen","Dansk livsstilsmodel med moderne og traditionelle samt idealistiske og materialistiske værdier"]]},{"id":7,"title":"Købsadfærd på B2C","topics":[["Forbrugerens behov","Oplevet savn eller ønske der kan motivere et køb"],["Medfødte behov","Grundlæggende behov uafhængige af kulturel oplæring"],["Kulturbestemte behov","Behov præget af sociale normer og kultur"],["Effektive behov","Behov der kan blive til køb på grund af betalingsmulighed"],["Latente behov","Behov der endnu ikke er aktiveret som efterspørgsel"],["Maslows behovspyramide","Model over fem niveauer af menneskelige behov"],["Fysiske behov","Behov for eksempelvis vand og mad"],["Tryghedsbehov","Behov for sikkerhed og stabilitet"],["Sociale behov","Behov for venskab og tilhørsforhold"],["Egobehov","Behov for anerkendelse og status"],["Selvrealisering","Behov for at udvikle og udfolde sit potentiale"],["Forbrugerens købemotiver","Grunde til et bestemt forbrugsvalg"],["Rationelle købemotiver","Nytte, funktion og økonomi driver valget"],["Sociale købemotiver","Social status og tilhørsforhold driver valget"],["Bandwagon-motivet","Man køber det, mange andre køber"],["Snob-motivet","Man søger det sjældne og eksklusive"],["Veblen-motivet","Høj pris øger produktets signalværdi"],["Thrifty-motivet","Glæden ved at spare eller gøre et godt køb"],["Forbrugerens købeadfærd","Samlet mønster i hvordan forbrugeren træffer købsvalg"],["Købevaner","Indarbejdede gentagne indkøbsmønstre"],["Købsroller","Initiativtager, påvirker, beslutningstager, køber og bruger"],["Købstyper på B2C","Inddeling af indkøb efter involvering og rutine"],["Købsbeslutningsprocessen","Fra behovserkendelse over informationssøgning og vurdering til køb og efterkøb"]]},{"id":8,"title":"Konkurrence","topics":[["Konkurrencesituation","Vilkårene for rivalisering på et marked"],["Snæver konkurrence","Direkte konkurrence mellem lignende produkter"],["Bred konkurrence","Forskellige løsninger konkurrerer om samme behov"],["Konkurrencetragtmodellen","Viser konkurrence fra brede behov til nære alternativer"],["Markedsformer","Markedstyper efter antal udbydere og produktforskelle"],["Præferencer på markedet","Kundernes særlige præferencer for produkter"],["Homogent marked","Kunder oplever produkterne som ens"],["Heterogent marked","Kunder oplever betydelige forskelle"],["Konkurrenceform","Markedets struktur og konkurrencevilkår"],["Monopol","En enkelt udbyder på markedet"],["Duopol","To udbydere dominerer markedet"],["Differentieret duopol","To udbydere med forskellige opfattede produkter"],["Fuldkommen konkurrence","Mange små udbydere af ens varer uden væsentlige adgangsbarrierer"],["Monopolistisk konkurrence","Mange udbydere med differentierede produkter"],["Markedsopdeling","Inddeling af markedet efter købspotentiale"],["Potentielle marked","Alle mulige købere af produktet"],["Effektive marked","De kunder der rent faktisk køber"],["Latente marked","Kunder med et muligt men uudnyttet behov"],["Digitalisering","Digitale teknologier ændrer konkurrence og kundeadfærd"],["Markedsandel","Virksomhedens del af salget i et defineret marked"],["Konkurrentanalyse","Systematisk vurdering af rivalernes forhold"],["Konkurrentovervågning","Løbende opfølgning på konkurrenters aktiviteter"],["Markedsposition","Virksomhedens relative plads i markedet"],["Markedsleder","Den førende aktør på det definerede marked"],["Markedsudfordrer","Vil aktivt erobre andele fra lederen"],["Markedsfølger","Tilpasser sig primært konkurrenternes initiativer"],["Niche","Snævert kundesegment med særlige behov"]]},{"id":9,"title":"Produkt","topics":[["Kvalitet","Produktets opfyldelse af kundens forventninger"],["Funktionel kvalitet","Produktets evne til at løse en opgave"],["Smagsmæssig kvalitet","Kundens personlige smagsoplevelse"],["Imagemæssig kvalitet","Status og identitet forbundet med varen"],["Emballage","Indpakning der beskytter, informerer og sælger"],["Sortiment","Alle de varer virksomheden fører"],["Bredt sortiment","Mange produktgrupper"],["Smalt sortiment","Få produktgrupper"],["Dybt sortiment","Mange varianter inden for en produktgruppe"],["Fladt sortiment","Få varianter inden for produktgrupperne"],["Service","Supplerende hjælp og ydelser omkring salget"]]},{"id":10,"title":"Place og distribution","topics":[["Distributionskæden","Vejen fra producent til slutkunde"],["Produktionsvirksomhed i kæden","Den fremstiller varen"],["Engroshandelsvirksomhed i kæden","Sælger varer videre til andre forhandlere"],["Detailhandelsvirksomhed i kæden","Sælger varer til private slutkunder"],["Forbrugere i kæden","Slutleddet der køber og anvender varen"],["Mellemhandlere","Aktører mellem producent og forbruger"],["Indirekte distribution","Varer sælges gennem mellemled"],["Direkte distribution","Varer sælges uden mellemled til kunden"],["Channel marketing","Markedsføring gennem og mod salgskanaler"],["Kædetyper","Former for organisation af flere butikker"],["Egentlige kæder","Butikker har fælles ejer"],["Frivillige kæder","Selvstændige forhandlere samarbejder"],["Franchise","Selvstændig forhandler bruger andens koncept og brand"],["Hybridkæde","Flere kædeformer kombineres"],["Beliggenhedsformer","Valg af placering efter adgang og kunder"],["Parkeringsorienteret","Placering hvor bilparkering vægtes"],["Trafikorienteret","Placering hvor mange passerer forbi"],["Boligorienteret","Placering nær kundernes boliger"],["Cityorienteret","Placering i bymidten"],["Centerorienteret","Placering i et shoppingcenter"]]},{"id":11,"title":"Pris","topics":[["Omkostningsbaseret prissætning","Pris ud fra omkostning plus ønsket avance"],["Konkurrenternes pris","Prisniveau vurderes ud fra andre udbydere"],["Kundernes behov og rådighedsbeløb","Pris bestemmes med hensyn til nytte og betalingsevne"],["Psykologiske priser","Pristal vælges for at påvirke oplevelsen eksempelvis 99 kroner"],["Prismatch","Løfte om at matche andres pris under bestemte betingelser"]]},{"id":12,"title":"Promotion","topics":[["Online promotion","Markedsføring via digitale kanaler"],["Omnichannel marketing","Sammenhængende oplevelse på tværs af alle kanaler"],["Singlechannel marketing","Brug af én kanal"],["Multichannel marketing","Flere kanaler der ikke nødvendigvis er integreret"],["Crosschannel marketing","Kanaler er forbundet så kunden kan skifte mellem dem"],["Offline promotion","Markedsføring uden digitale kanaler"],["Reklamer","Betalt afsenderstyret kommunikation"],["Sales promotion","Kortsigtede salgsstimulerende tiltag"],["Public relations","Arbejdet med virksomhedens omdømme og interessentrelationer"],["Butiksindretning og vareeksponering","Placering og præsentation af varer i butikken"],["AIDA-modellen","Attention, Interest, Desire, Action"],["Attention","Fange kundens opmærksomhed"],["Interest","Skabe interesse"],["Desire","Skabe ønske om produktet"],["Action","Få kunden til at handle"],["Manipulative reklamer","Appellerer især til følelser og holdninger"],["Informative reklamer","Kommunikerer især fakta og produktegenskaber"],["Branding","Skabe tydelig identitet og associationer"],["Produktbranding","Opbygge et produkts særskilte identitet"],["Virksomhedsbranding","Opbygge hele virksomhedens image"],["Personbranding","Opbygge en persons offentlige profil"],["CSR","Virksomhedens sociale og miljømæssige ansvar"]]},{"id":13,"title":"Kundeservice og betjening","topics":[["Offline kundebetjening","Kundekontakt uden en digital butik"],["Diskbetjening","Personlig hjælp ved salgsdisk"],["Selvbetjening","Kunden betjener sig primært selv"],["Selvvalg","Kunden udvælger selv varer men kan få assistance"],["Telefonbetjening","Service ydes over telefon"],["Online kundebetjening","Service gennem digital handel og kommunikation"],["Webshoppen som kundeservice","Kundens digitale sted for køb og hjælp"],["Levering i webshoppen","Oplysning om tid, pris og leveringsmetode"],["Fortrydelsesret i webshoppen","Vejledning om omfang og brug af fortrydelsesret"],["Kommunikation i webshoppen","Let forståelige kontakt- og servicemuligheder"],["Søgbarhed i webshoppen","Kunden kan hurtigt finde varer og oplysninger"],["Sikkerhed i webshoppen","Beskyttelse af data og betaling"],["Salgstrappen","Faseopdelt model for salgsarbejdet"],["Det forberedende salgsarbejde","Forberedelse med kunde- og produktkendskab"],["Det gennemførende salgsarbejde","Kontakt, behovsafdækning og produktpræsentation"],["Det afsluttende salgsarbejde","Kundens beslutning og afslutning af handlen"],["Behandling af reklamationer","Klagen undersøges og løses ordentligt"],["Servicekoncepter","Principper for hvordan virksomheden vil levere service"],["Servicepakken","Kerneydelse plus supplerende ydelser"],["Kerneydelse","Den centrale ydelse kunden efterspørger"],["Periferiydelser","Ydelser der supplerer og understøtter kerneydelsen"],["Serviceleverancesystem","Samspil mellem kunder, frontpersonale og bagvedliggende systemer"],["Kunder i serviceleverancesystemet","Modtagere og medskabere af serviceydelsen"],["Frontpersonale","Medarbejdere i direkte kundekontakt"],["Backup-system","Interne funktioner som understøtter servicemedarbejdere"]]}];const KEY="next-afsaetning-d-v1";
+const $=id=>document.getElementById(id);let current=-1,index=0,order=[],answers=[],selected=null;
+const contexts=["Til en mundtlig eksamen beder censor dig analysere en fitnessvirksomhed.","Forestil dig, at du rådgiver en virksomhed på fitnessmarkedet.","En virksomhed vil træffe et vigtigt valg. Du skal bruge afsætningsteorien.","Censor viser dig en tænkt case fra en butik eller en servicevirksomhed."];
+function shuffle(a){for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function safeGet(){try{return JSON.parse(localStorage.getItem(KEY)||"{}")}catch{return {}}}
+function saveResult(id,score,total){try{const p=safeGet();p[id]={score,total,time:Date.now()};localStorage.setItem(KEY,JSON.stringify(p))}catch{}}
+function renderHome(){const p=safeGet();$("chapter-grid").replaceChildren();CHAPTERS.forEach((c,i)=>{let box=document.createElement("article");box.className="chapter-card";const saved=p[i];box.innerHTML='<span class="chapter-num">KAPITEL '+String(i+1).padStart(2,"0")+'</span><h3>'+c.title+'</h3><p>'+c.topics.length+' mundtlige eksamensspørgsmål</p>'+(saved?'<div class="mini-progress" aria-label="Seneste resultat"><span style="width:'+Math.round(saved.score/saved.total*100)+'%"></span></div><small>Senest: '+saved.score+' af '+saved.total+' rigtige</small>':"");let b=document.createElement("button");b.className="button button-primary";b.textContent="Start emnet  →";b.addEventListener("click",()=>start(i));box.append(b);$("chapter-grid").append(box)})}
+function screen(id){for(const k of ["home","practice","result"])$(k).hidden=k!==id;window.scrollTo({top:0,behavior:"instant"})}
+function start(i){current=i;index=0;answers=[];order=shuffle(CHAPTERS[i].topics.map((_,j)=>j));screen("practice");showQuestion()}
+function quizOptions(ch,termIndex){const pool=ch.topics.map((t,i)=>({label:t[1],idx:i})).filter(x=>x.idx!==termIndex&&x.label!==ch.topics[termIndex][1]);shuffle(pool);return shuffle([{label:ch.topics[termIndex][1],idx:termIndex},...pool.slice(0,3)])}
+function showQuestion(){selected=null;const c=CHAPTERS[current],t=c.topics[order[index]];$("practice-meta").textContent=c.title+" · "+(index+1)+" af "+order.length;$("bar").style.width=(index/order.length*100)+"%";$("next").disabled=true;$("next").innerHTML=index===order.length-1?"Vis resultat →":"Næste spørgsmål →";const slot=$("question-slot");slot.replaceChildren();const over=document.createElement("p");over.className="overline";over.textContent="Mundtligt spørgsmål · Kapitel "+(current+1);slot.append(over);const caseText=document.createElement("p");caseText.className="case";caseText.textContent=contexts[(index+current)%contexts.length];slot.append(caseText);const heading=document.createElement("h2");heading.textContent="Hvordan vil du forklare begrebet “"+t[0]+"”, og hvilken betydning kan det have i praksis?";slot.append(heading);const intro=document.createElement("p");intro.textContent="Vælg den fagligt mest præcise forklaring. Prøv derefter at formulere svaret med dine egne ord.";slot.append(intro);const opts=document.createElement("div");opts.className="choices";const values=quizOptions(c,order[index]);values.forEach((opt,i)=>{let button=document.createElement("button");button.className="choice";button.dataset.correct=String(opt.idx===order[index]);button.innerHTML='<strong>'+String.fromCharCode(65+i)+'.</strong> ';let label=document.createElement("span");label.textContent=opt.label;button.append(label);button.onclick=()=>choose(button,t);opts.append(button)});slot.append(opts);let fb=document.createElement("div");fb.className="feedback";fb.id="feedback";fb.hidden=true;slot.append(fb)}
+function choose(button,t){if(selected!==null)return;selected=button.dataset.correct==="true";answers.push({term:t[0],correct:selected});document.querySelectorAll(".choice").forEach(b=>{b.disabled=true;if(b.dataset.correct==="true")b.classList.add("correct");else if(b===button)b.classList.add("wrong")});const fb=$("feedback");fb.hidden=false;fb.replaceChildren();let h=document.createElement("h3");h.textContent=selected?"Rigtigt svar":"Ikke helt. Her er den præcise forklaring.";fb.append(h);let p=document.createElement("p");p.innerHTML="<strong>Faglig forklaring:</strong> ";p.append(document.createTextNode(t[1]+"."));fb.append(p);let oral=document.createElement("div");oral.className="oral-box";oral.innerHTML="<strong>Opfølgende eksamensspørgsmål</strong><p>Giv et konkret eksempel fra en fitnessvirksomhed eller et andet marked, og forklar hvordan begrebet påvirker virksomhedens beslutninger.</p>";fb.append(oral);$("next").disabled=false}
+function next(){if(selected===null)return;if(index<order.length-1){index++;showQuestion();document.getElementById("practice").scrollIntoView()}else finish()}
+function finish(){const c=CHAPTERS[current],good=answers.filter(x=>x.correct).length;saveResult(current,good,answers.length);$("result-title").textContent=c.title;$("result-scores").innerHTML='<div><strong>'+good+'/'+answers.length+'</strong>Rigtige svar</div><div><strong>'+Math.round(good/answers.length*100)+' %</strong>Resultat</div>';$("result-summary").textContent="Brug den mundtlige forklaring til at træne videre. En god eksamensbesvarelse viser både, at du kan definere et begreb, forklare det og anvende det i en konkret situation.";$("review").replaceChildren();const wrong=answers.filter(x=>!x.correct);if(!wrong.length){let li=document.createElement("li");li.textContent="Alle begreber blev besvaret korrekt. Øv dig i at forklare dem uden svarmuligheder."; $("review").append(li)}else wrong.forEach(x=>{const li=document.createElement("li");li.textContent=x.term;$("review").append(li)});$("bar").style.width="100%";screen("result")}
+function home(){renderHome();screen("home")}
+$("next").onclick=next;$("back").onclick=home;$("header-home").onclick=home;$("logo").onclick=e=>{e.preventDefault();home()};$("reset").onclick=()=>start(current);$("retry").onclick=()=>start(current);$("result-home").onclick=home;renderHome();</script></body></html>
