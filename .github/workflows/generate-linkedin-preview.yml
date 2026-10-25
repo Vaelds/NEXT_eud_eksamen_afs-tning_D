@@ -1,11 +1,11 @@
-name: Build LinkedIn landscape preview
+name: Capture actual website for LinkedIn
 on:
   push:
-    paths: ['.github/workflows/generate-linkedin-preview.yml']
+    paths:
+      - '.github/workflows/generate-linkedin-preview.yml'
   workflow_dispatch:
 permissions:
   contents: write
-
 jobs:
   capture:
     runs-on: ubuntu-24.04
@@ -14,87 +14,99 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install Chrome screenshot dependencies
+      - name: Install screenshot dependencies
         run: python -m pip install selenium Pillow
-      - name: Capture 2x retina screenshot in LinkedIn 1.91:1 format
+      - name: Render real website at native retina resolution
         run: |
           python - <<'PY'
           import io
-          from pathlib import Path
           import time
+          from pathlib import Path
           from PIL import Image
           from selenium import webdriver
           from selenium.webdriver.chrome.options import Options
 
-          options = Options()
-          options.add_argument('--headless=new')
-          options.add_argument('--no-sandbox')
-          options.add_argument('--disable-dev-shm-usage')
-          options.add_argument('--hide-scrollbars')
-          options.add_argument('--force-color-profile=srgb')
-          driver = webdriver.Chrome(options=options)
+          opts=Options()
+          for flag in ('--headless=new','--no-sandbox','--disable-dev-shm-usage','--hide-scrollbars','--force-color-profile=srgb'):
+              opts.add_argument(flag)
+          driver=webdriver.Chrome(options=opts)
           try:
-              # 1512x792 desktop composition, at 2x native resolution.
-              driver.execute_cdp_cmd('Emulation.setDeviceMetricsOverride', {
-                  'width':1512, 'height':792, 'deviceScaleFactor':2, 'mobile':False
+              driver.execute_cdp_cmd('Emulation.setDeviceMetricsOverride',{
+                  'width':1200,'height':628,'deviceScaleFactor':2,'mobile':False
               })
               driver.get('https://vaelds.github.io/NEXT_eud_eksamen_afs-tning_D/')
-              driver.execute_async_script(
-                  'const done=arguments[0]; document.fonts.ready.then(done);')
+              driver.execute_async_script('const done=arguments[0]; document.fonts.ready.then(done);')
               driver.execute_script("""
-                const css=document.createElement('style');
-                css.textContent = `
-                  html,body {scroll-behavior:auto!important;overflow:hidden!important}
-                  ::-webkit-scrollbar {display:none!important}
-                  .masthead {
-                    height:106px!important;
-                    min-height:106px!important;
-                    padding-top:15px!important;
-                    padding-bottom:15px!important;
-                  }
-                  .hero {
-                    height:686px!important;
-                    min-height:686px!important;
-                    max-height:686px!important;
-                    padding-top:47px!important;
-                    padding-bottom:10px!important;
-                  }
-                  .hero-content {padding-bottom:80px!important}
-                  .hero h1 {font-size:98px!important}
-                  .hero-lead {
-                    max-width:710px!important;
-                    font-size:19px!important;
-                    line-height:1.4!important;
-                    margin-top:20px!important
-                  }
-                  .hero-actions {margin-top:22px!important}
-                  .hero-shape-two {display:none!important}
-                  .hero-stats {min-height:99px!important}
-                  .hero-stats > div {padding:23px 20px!important}
-                `;
-                document.head.appendChild(css);
-                window.scrollTo(0,0);
+                  const st=document.createElement('style');
+                  st.textContent=`
+                    html,body{scroll-behavior:auto!important;overflow:hidden!important}
+                    ::-webkit-scrollbar{display:none!important}
+                    .masthead{
+                       height:80px!important;min-height:80px!important;
+                       padding:7px 42px!important;gap:20px!important;
+                       grid-template-columns:160px 1fr auto!important
+                    }
+                    .brand img{width:131px!important}
+                    .masthead-meta{gap:13px!important;padding-left:19px!important}
+                    .masthead-meta span{font-size:10px!important}
+                    .masthead-meta strong{font-size:11px!important}
+                    .header-cta{min-height:42px!important;padding:10px 13px!important;gap:13px!important}
+                    .hero{
+                       height:548px!important;min-height:548px!important;max-height:548px!important;
+                       padding:0!important;display:grid!important;align-items:center!important
+                    }
+                    .hero-content{
+                       width:calc(100% - 100px)!important;margin-inline:auto!important;
+                       padding-bottom:84px!important
+                    }
+                    .hero h1{
+                      font-size:77px!important;line-height:.86!important;
+                      max-width:650px!important
+                    }
+                    .hero-lead{
+                       max-width:675px!important;font-size:16px!important;
+                       line-height:1.35!important;margin-top:19px!important
+                    }
+                    .hero-actions{margin-top:19px!important}
+                    .hero-actions .button{
+                       min-height:47px!important;min-width:190px!important;
+                       padding:11px 16px!important
+                    }
+                    .hero-stats{
+                       bottom:0!important;min-height:79px!important;
+                       grid-template-columns:repeat(3,minmax(0,185px)) minmax(0,1fr)!important;
+                       padding:0!important
+                    }
+                    .hero-stats>div{padding:15px 13px!important;gap:8px!important}
+                    .hero-stats strong{font-size:30px!important}
+                    .hero-stats span{font-size:10px!important}
+                    .hero-stats p{font-size:11px!important;padding:12px!important}
+                    .hero-shape-two{display:none!important}
+                  `;
+                  document.head.appendChild(st);
+                  window.scrollTo(0,0);
               """)
               time.sleep(3)
-              rendered=Image.open(io.BytesIO(driver.get_screenshot_as_png()))
-              print('Native screenshot',rendered.size,flush=True)
-              # Save large, lossless pixels to withstand LinkedIn rescaling.
-              out=rendered.convert('RGB').crop((0,0,3024,1584))
-              target=Path('assets/images/linkedin-preview-2400x1256.png')
-              target.parent.mkdir(parents=True,exist_ok=True)
-              # 2400/1256 = 1.911, matching LinkedIn 1200/628.
-              out=out.resize((2400,1256),Image.Resampling.LANCZOS)
-              out.save(target,format='PNG',optimize=True)
-              print('Created',target,'size',out.size,'bytes',target.stat().st_size)
+              # Export native raster at 2x: do not crop or resize a full browser screenshot.
+              screenshot=Image.open(io.BytesIO(driver.get_screenshot_as_png())).convert('RGB')
+              if screenshot.size!=(2400,1256):
+                  raise RuntimeError(f'Unexpected dimensions: {screenshot.size}')
+              destination=Path('assets/images/linkedin-website-preview-v3.png')
+              destination.parent.mkdir(parents=True,exist_ok=True)
+              screenshot.save(destination,'PNG',optimize=True)
+              # A lightweight copy only for internal quality inspection.
+              diagnostic=screenshot.resize((960,502),Image.Resampling.LANCZOS)
+              diagnostic.save('assets/images/linkedin-website-preview-check.jpg','JPEG',quality=78,optimize=True)
+              print('Rendered real NEXT website in native 2400x1256 screenshot; bytes:',destination.stat().st_size)
           finally:
               driver.quit()
           PY
-      - name: Commit optimized preview
+      - name: Publish screenshot to GitHub Pages
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/images/linkedin-preview-2400x1256.png
+          git add assets/images/linkedin-website-preview-v3.png assets/images/linkedin-website-preview-check.jpg
           if ! git diff --cached --quiet; then
-            git commit -m "Produce high-resolution 1.91:1 LinkedIn preview from actual webpage"
+            git commit -m "Capture actual NEXT homepage in LinkedIn aspect ratio without rescaling"
             git push
           fi
