@@ -1,4 +1,4 @@
-name: Capture actual website for LinkedIn
+name: Build readable LinkedIn preview from real website
 on:
   push:
     paths:
@@ -7,106 +7,103 @@ on:
 permissions:
   contents: write
 jobs:
-  capture:
+  screenshot:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install screenshot dependencies
-        run: python -m pip install selenium Pillow
-      - name: Render real website at native retina resolution
+      - name: Install screenshot tools
+        run: python -m pip install selenium pillow
+      - name: Capture the actual website in LinkedIn's native image format
+        shell: bash
         run: |
           python - <<'PY'
-          import io
-          import time
           from pathlib import Path
+          import io,time
           from PIL import Image
           from selenium import webdriver
           from selenium.webdriver.chrome.options import Options
-
           opts=Options()
-          for flag in ('--headless=new','--no-sandbox','--disable-dev-shm-usage','--hide-scrollbars','--force-color-profile=srgb'):
-              opts.add_argument(flag)
-          driver=webdriver.Chrome(options=opts)
+          for arg in ["--headless=new","--no-sandbox","--disable-dev-shm-usage","--hide-scrollbars","--force-color-profile=srgb"]:
+              opts.add_argument(arg)
+          browser=webdriver.Chrome(options=opts)
           try:
-              driver.execute_cdp_cmd('Emulation.setDeviceMetricsOverride',{
-                  'width':1200,'height':628,'deviceScaleFactor':2,'mobile':False
+              browser.execute_cdp_cmd("Emulation.setDeviceMetricsOverride",{
+                  "width":1200,"height":628,"deviceScaleFactor":2,"mobile":False
               })
-              driver.get('https://vaelds.github.io/NEXT_eud_eksamen_afs-tning_D/')
-              driver.execute_async_script('const done=arguments[0]; document.fonts.ready.then(done);')
-              driver.execute_script("""
-                  const st=document.createElement('style');
-                  st.textContent=`
-                    html,body{scroll-behavior:auto!important;overflow:hidden!important}
-                    ::-webkit-scrollbar{display:none!important}
-                    .masthead{
-                       height:80px!important;min-height:80px!important;
-                       padding:7px 42px!important;gap:20px!important;
-                       grid-template-columns:160px 1fr auto!important
-                    }
-                    .brand img{width:131px!important}
-                    .masthead-meta{gap:13px!important;padding-left:19px!important}
-                    .masthead-meta span{font-size:10px!important}
-                    .masthead-meta strong{font-size:11px!important}
-                    .header-cta{min-height:42px!important;padding:10px 13px!important;gap:13px!important}
-                    .hero{
-                       height:548px!important;min-height:548px!important;max-height:548px!important;
-                       padding:0!important;display:grid!important;align-items:center!important
-                    }
-                    .hero-content{
-                       width:calc(100% - 100px)!important;margin-inline:auto!important;
-                       padding-bottom:84px!important
-                    }
-                    .hero h1{
-                      font-size:77px!important;line-height:.86!important;
-                      max-width:650px!important
-                    }
-                    .hero-lead{
-                       max-width:675px!important;font-size:16px!important;
-                       line-height:1.35!important;margin-top:19px!important
-                    }
-                    .hero-actions{margin-top:19px!important}
-                    .hero-actions .button{
-                       min-height:47px!important;min-width:190px!important;
-                       padding:11px 16px!important
-                    }
-                    .hero-stats{
-                       bottom:0!important;min-height:79px!important;
-                       grid-template-columns:repeat(3,minmax(0,185px)) minmax(0,1fr)!important;
-                       padding:0!important
-                    }
-                    .hero-stats>div{padding:15px 13px!important;gap:8px!important}
-                    .hero-stats strong{font-size:30px!important}
-                    .hero-stats span{font-size:10px!important}
-                    .hero-stats p{font-size:11px!important;padding:12px!important}
-                    .hero-shape-two{display:none!important}
-                  `;
-                  document.head.appendChild(st);
-                  window.scrollTo(0,0);
+              browser.get("https://vaelds.github.io/NEXT_eud_eksamen_afs-tning_D/")
+              browser.execute_async_script("const done=arguments[0];document.fonts.ready.then(done);")
+              browser.execute_script("""
+                const st=document.createElement('style');
+                st.textContent=`
+                  html,body{scroll-behavior:auto!important;overflow:hidden!important}
+                  ::-webkit-scrollbar{display:none!important}
+                  .masthead{
+                    height:84px!important;min-height:84px!important;
+                    display:grid!important;
+                    grid-template-columns:168px 1fr auto!important;
+                    padding:10px 45px!important;
+                    gap:23px!important
+                  }
+                  .brand img{width:144px!important}
+                  .masthead-meta{gap:13px!important;padding-left:18px!important}
+                  .masthead-meta span{font-size:12px!important}
+                  .masthead-meta strong{font-size:13px!important}
+                  .masthead .header-cta{min-height:42px!important;font-size:12px!important;padding:10px 13px!important;gap:18px!important}
+                  .hero{
+                    height:544px!important;min-height:544px!important;max-height:544px!important;
+                    display:grid!important;align-items:center!important;padding:0!important
+                  }
+                  .hero-content{
+                    width:calc(100% - 95px)!important;
+                    margin-inline:auto!important;
+                    padding-bottom:78px!important;
+                  }
+                  .hero h1{font-size:96px!important;line-height:.87!important;max-width:670px!important}
+                  .hero-lead{
+                    max-width:590px!important;
+                    font-size:23px!important;
+                    line-height:1.25!important;
+                    margin-top:26px!important;
+                    letter-spacing:0!important
+                  }
+                  .hero-actions{margin-top:22px!important}
+                  .hero-actions .button{min-height:52px!important;min-width:200px!important;font-size:14px!important}
+                  .hero-stats{
+                    bottom:0!important;min-height:94px!important;padding:0!important;
+                    grid-template-columns:260px 245px 280px minmax(0,1fr)!important
+                  }
+                  .hero-stats>div{padding:24px 18px!important;gap:8px!important}
+                  .hero-stats strong{font-size:40px!important}
+                  .hero-stats span{font-size:13px!important}
+                  .hero-stats p{font-size:13px!important;padding:18px!important}
+                  .hero-shape-two{display:none!important}
+                `;
+                document.head.appendChild(st);
+                document.querySelector('.hero-lead').textContent='213 spørgsmål. 13 emner. Træn fagbegreber og mundtlig eksamen.';
+                window.scrollTo(0,0);
               """)
-              time.sleep(3)
-              # Export native raster at 2x: do not crop or resize a full browser screenshot.
-              screenshot=Image.open(io.BytesIO(driver.get_screenshot_as_png())).convert('RGB')
-              if screenshot.size!=(2400,1256):
-                  raise RuntimeError(f'Unexpected dimensions: {screenshot.size}')
-              destination=Path('assets/images/linkedin-website-preview-v3.png')
-              destination.parent.mkdir(parents=True,exist_ok=True)
-              screenshot.save(destination,'PNG',optimize=True)
-              # A lightweight copy only for internal quality inspection.
-              diagnostic=screenshot.resize((960,502),Image.Resampling.LANCZOS)
-              diagnostic.save('assets/images/linkedin-website-preview-check.jpg','JPEG',quality=78,optimize=True)
-              print('Rendered real NEXT website in native 2400x1256 screenshot; bytes:',destination.stat().st_size)
+              time.sleep(2)
+              orig=Image.open(io.BytesIO(browser.get_screenshot_as_png())).convert("RGB")
+              assert orig.size==(2400,1256),f"wrong size {orig.size}"
+              final=orig.resize((1200,628),Image.Resampling.LANCZOS)
+              target=Path("assets/images/next-afsaetning-linkedin-1200x628-v4.jpg")
+              target.parent.mkdir(parents=True,exist_ok=True)
+              final.save(target,format="JPEG",quality=94,subsampling=0,optimize=True,progressive=False)
+              print("Saved:",str(target),final.size,target.stat().st_size)
+              assert target.stat().st_size<5_000_000
           finally:
-              driver.quit()
+              browser.quit()
           PY
-      - name: Publish screenshot to GitHub Pages
+      - name: Commit the image
+        shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/images/linkedin-website-preview-v3.png assets/images/linkedin-website-preview-check.jpg
+          git add assets/images/next-afsaetning-linkedin-1200x628-v4.jpg
           if ! git diff --cached --quiet; then
-            git commit -m "Capture actual NEXT homepage in LinkedIn aspect ratio without rescaling"
-            git push
+             git commit -m "Add LinkedIn-size sharp screenshot of real NEXT homepage"
+             git push
           fi
