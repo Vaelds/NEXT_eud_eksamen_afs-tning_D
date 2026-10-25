@@ -1,0 +1,59 @@
+name: Generate LinkedIn preview image
+on:
+  push:
+    paths:
+      - '.github/workflows/generate-linkedin-preview.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  screenshot:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out website
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install screenshot tools
+        run: python -m pip install selenium pillow
+      - name: Capture website as JPEG
+        shell: bash
+        run: |
+          python - <<'PY'
+          import io, os, time
+          from PIL import Image
+          from selenium import webdriver
+          from selenium.webdriver.chrome.options import Options
+          opts = Options()
+          opts.add_argument("--headless=new")
+          opts.add_argument("--no-sandbox")
+          opts.add_argument("--disable-dev-shm-usage")
+          opts.add_argument("--force-device-scale-factor=1")
+          driver = webdriver.Chrome(options=opts)
+          try:
+              driver.execute_cdp_cmd("Emulation.setDeviceMetricsOverride", {
+                  "width":1512, "height":987, "deviceScaleFactor":1, "mobile":False
+              })
+              driver.get("https://vaelds.github.io/NEXT_eud_eksamen_afs-tning_D/")
+              driver.execute_async_script("const done=arguments[0]; document.fonts.ready.then(done);")
+              driver.execute_script("window.scrollTo(0,0)")
+              time.sleep(2)
+              image = Image.open(io.BytesIO(driver.get_screenshot_as_png())).convert("RGB")
+              if image.size != (1512,987):
+                  image = image.crop((0,0,1512,987))
+              os.makedirs("assets/images",exist_ok=True)
+              image.save("assets/images/og-preview-afsaetning-d.jpg",
+                         "JPEG", quality=88, optimize=True, subsampling=0)
+              print("Generated LinkedIn image", image.size)
+          finally:
+              driver.quit()
+          PY
+      - name: Commit the preview image to the website
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/images/og-preview-afsaetning-d.jpg
+          git diff --cached --quiet || (git commit -m "Add website screenshot for LinkedIn OG preview" && git push)
