@@ -1,68 +1,100 @@
-name: Generate LinkedIn preview image
+name: Build LinkedIn landscape preview
 on:
   push:
-    paths:
-      - '.github/workflows/generate-linkedin-preview.yml'
+    paths: ['.github/workflows/generate-linkedin-preview.yml']
   workflow_dispatch:
 permissions:
   contents: write
+
 jobs:
-  screenshot:
+  capture:
     runs-on: ubuntu-24.04
     steps:
-      - name: Check out website
-        uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install screenshot tools
-        run: python -m pip install selenium pillow
-      - name: Capture crisp full-page hero screenshot
-        shell: bash
+      - name: Install Chrome screenshot dependencies
+        run: python -m pip install selenium Pillow
+      - name: Capture 2x retina screenshot in LinkedIn 1.91:1 format
         run: |
           python - <<'PY'
-          import io, os, time
+          import io
+          from pathlib import Path
+          import time
           from PIL import Image
           from selenium import webdriver
           from selenium.webdriver.chrome.options import Options
 
           options = Options()
-          options.add_argument("--headless=new")
-          options.add_argument("--no-sandbox")
-          options.add_argument("--disable-dev-shm-usage")
-          options.add_argument("--hide-scrollbars")
+          options.add_argument('--headless=new')
+          options.add_argument('--no-sandbox')
+          options.add_argument('--disable-dev-shm-usage')
+          options.add_argument('--hide-scrollbars')
+          options.add_argument('--force-color-profile=srgb')
           driver = webdriver.Chrome(options=options)
           try:
-              # User's screenshot is at approximately 112% browser zoom.
-              # A 1400 CSS-pixel viewport renders at 1568 physical pixels.
-              driver.execute_cdp_cmd("Emulation.setDeviceMetricsOverride", {
-                  "width":1400, "height":878, "deviceScaleFactor":1.12, "mobile":False
+              # 1512x792 desktop composition, at 2x native resolution.
+              driver.execute_cdp_cmd('Emulation.setDeviceMetricsOverride', {
+                  'width':1512, 'height':792, 'deviceScaleFactor':2, 'mobile':False
               })
-              driver.get("https://vaelds.github.io/NEXT_eud_eksamen_afs-tning_D/")
-              driver.execute_async_script("const done=arguments[0]; document.fonts.ready.then(done);")
+              driver.get('https://vaelds.github.io/NEXT_eud_eksamen_afs-tning_D/')
+              driver.execute_async_script(
+                  'const done=arguments[0]; document.fonts.ready.then(done);')
               driver.execute_script("""
-                  const css = document.createElement('style');
-                  css.textContent = '.hero-shape-two { display:none!important; } ::-webkit-scrollbar {display:none!important}';
-                  document.head.appendChild(css);
-                  window.scrollTo(0,0);
+                const css=document.createElement('style');
+                css.textContent = `
+                  html,body {scroll-behavior:auto!important;overflow:hidden!important}
+                  ::-webkit-scrollbar {display:none!important}
+                  .masthead {
+                    height:106px!important;
+                    min-height:106px!important;
+                    padding-top:15px!important;
+                    padding-bottom:15px!important;
+                  }
+                  .hero {
+                    height:686px!important;
+                    min-height:686px!important;
+                    max-height:686px!important;
+                    padding-top:47px!important;
+                    padding-bottom:10px!important;
+                  }
+                  .hero-content {padding-bottom:80px!important}
+                  .hero h1 {font-size:98px!important}
+                  .hero-lead {
+                    max-width:710px!important;
+                    font-size:19px!important;
+                    line-height:1.4!important;
+                    margin-top:20px!important
+                  }
+                  .hero-actions {margin-top:22px!important}
+                  .hero-shape-two {display:none!important}
+                  .hero-stats {min-height:99px!important}
+                  .hero-stats > div {padding:23px 20px!important}
+                `;
+                document.head.appendChild(css);
+                window.scrollTo(0,0);
               """)
-              time.sleep(2)
-              img = Image.open(io.BytesIO(driver.get_screenshot_as_png())).convert("RGB")
-              # Preserve original desktop screenshot's exact aspect ratio.
-              if img.width >= 1567 and img.height >= 983:
-                  img = img.crop((0,0,1567,983))
-              os.makedirs("assets/images", exist_ok=True)
-              output = "assets/images/og-preview-afsaetning-d-v2.png"
-              img.save(output, "PNG", optimize=True)
-              print("Generated lossless LinkedIn preview:", img.size, os.path.getsize(output))
+              time.sleep(3)
+              rendered=Image.open(io.BytesIO(driver.get_screenshot_as_png()))
+              print('Native screenshot',rendered.size,flush=True)
+              # Save large, lossless pixels to withstand LinkedIn rescaling.
+              out=rendered.convert('RGB').crop((0,0,3024,1584))
+              target=Path('assets/images/linkedin-preview-2400x1256.png')
+              target.parent.mkdir(parents=True,exist_ok=True)
+              # 2400/1256 = 1.911, matching LinkedIn 1200/628.
+              out=out.resize((2400,1256),Image.Resampling.LANCZOS)
+              out.save(target,format='PNG',optimize=True)
+              print('Created',target,'size',out.size,'bytes',target.stat().st_size)
           finally:
               driver.quit()
           PY
-      - name: Commit image for GitHub Pages
-        shell: bash
+      - name: Commit optimized preview
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/images/og-preview-afsaetning-d-v2.png
-          git diff --cached --quiet || (git commit -m "Generate lossless LinkedIn screenshot matching supplied image" && git push)
+          git add assets/images/linkedin-preview-2400x1256.png
+          if ! git diff --cached --quiet; then
+            git commit -m "Produce high-resolution 1.91:1 LinkedIn preview from actual webpage"
+            git push
+          fi
