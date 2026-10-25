@@ -18,7 +18,7 @@ jobs:
           python-version: '3.12'
       - name: Install screenshot tools
         run: python -m pip install selenium pillow
-      - name: Capture website as JPEG
+      - name: Capture crisp full-page hero screenshot
         shell: bash
         run: |
           python - <<'PY'
@@ -26,34 +26,43 @@ jobs:
           from PIL import Image
           from selenium import webdriver
           from selenium.webdriver.chrome.options import Options
-          opts = Options()
-          opts.add_argument("--headless=new")
-          opts.add_argument("--no-sandbox")
-          opts.add_argument("--disable-dev-shm-usage")
-          opts.add_argument("--force-device-scale-factor=1")
-          driver = webdriver.Chrome(options=opts)
+
+          options = Options()
+          options.add_argument("--headless=new")
+          options.add_argument("--no-sandbox")
+          options.add_argument("--disable-dev-shm-usage")
+          options.add_argument("--hide-scrollbars")
+          driver = webdriver.Chrome(options=options)
           try:
+              # User's screenshot is at approximately 112% browser zoom.
+              # A 1400 CSS-pixel viewport renders at 1568 physical pixels.
               driver.execute_cdp_cmd("Emulation.setDeviceMetricsOverride", {
-                  "width":1512, "height":987, "deviceScaleFactor":1, "mobile":False
+                  "width":1400, "height":878, "deviceScaleFactor":1.12, "mobile":False
               })
               driver.get("https://vaelds.github.io/NEXT_eud_eksamen_afs-tning_D/")
               driver.execute_async_script("const done=arguments[0]; document.fonts.ready.then(done);")
-              driver.execute_script("window.scrollTo(0,0)")
+              driver.execute_script("""
+                  const css = document.createElement('style');
+                  css.textContent = '.hero-shape-two { display:none!important; } ::-webkit-scrollbar {display:none!important}';
+                  document.head.appendChild(css);
+                  window.scrollTo(0,0);
+              """)
               time.sleep(2)
-              image = Image.open(io.BytesIO(driver.get_screenshot_as_png())).convert("RGB")
-              if image.size != (1512,987):
-                  image = image.crop((0,0,1512,987))
-              os.makedirs("assets/images",exist_ok=True)
-              image.save("assets/images/og-preview-afsaetning-d.jpg",
-                         "JPEG", quality=88, optimize=True, subsampling=0)
-              print("Generated LinkedIn image", image.size)
+              img = Image.open(io.BytesIO(driver.get_screenshot_as_png())).convert("RGB")
+              # Preserve original desktop screenshot's exact aspect ratio.
+              if img.width >= 1567 and img.height >= 983:
+                  img = img.crop((0,0,1567,983))
+              os.makedirs("assets/images", exist_ok=True)
+              output = "assets/images/og-preview-afsaetning-d-v2.png"
+              img.save(output, "PNG", optimize=True)
+              print("Generated lossless LinkedIn preview:", img.size, os.path.getsize(output))
           finally:
               driver.quit()
           PY
-      - name: Commit the preview image to the website
+      - name: Commit image for GitHub Pages
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/images/og-preview-afsaetning-d.jpg
-          git diff --cached --quiet || (git commit -m "Add website screenshot for LinkedIn OG preview" && git push)
+          git add assets/images/og-preview-afsaetning-d-v2.png
+          git diff --cached --quiet || (git commit -m "Generate lossless LinkedIn screenshot matching supplied image" && git push)
