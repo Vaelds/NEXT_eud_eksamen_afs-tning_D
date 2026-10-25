@@ -59,24 +59,24 @@ jobs:
                   .hero-content{
                     width:calc(100% - 95px)!important;
                     margin-inline:auto!important;
-                    padding-bottom:78px!important;
+                    padding-bottom:54px!important;
                   }
-                  .hero h1{font-size:96px!important;line-height:.87!important;max-width:670px!important}
+                  .hero h1{font-size:78px!important;line-height:.89!important;max-width:670px!important}
                   .hero-lead{
                     max-width:590px!important;
-                    font-size:23px!important;
+                    font-size:20px!important;
                     line-height:1.25!important;
-                    margin-top:26px!important;
+                    margin-top:17px!important;
                     letter-spacing:0!important
                   }
-                  .hero-actions{margin-top:22px!important}
+                  .hero-actions{margin-top:15px!important}
                   .hero-actions .button{min-height:52px!important;min-width:200px!important;font-size:14px!important}
                   .hero-stats{
-                    bottom:0!important;min-height:94px!important;padding:0!important;
+                    bottom:0!important;min-height:80px!important;padding:0!important;
                     grid-template-columns:260px 245px 280px minmax(0,1fr)!important
                   }
-                  .hero-stats>div{padding:24px 18px!important;gap:8px!important}
-                  .hero-stats strong{font-size:40px!important}
+                  .hero-stats>div{padding:17px 18px!important;gap:8px!important}
+                  .hero-stats strong{font-size:34px!important}
                   .hero-stats span{font-size:13px!important}
                   .hero-stats p{font-size:13px!important;padding:18px!important}
                   .hero-shape-two{display:none!important}
@@ -89,7 +89,7 @@ jobs:
               orig=Image.open(io.BytesIO(browser.get_screenshot_as_png())).convert("RGB")
               assert orig.size==(2400,1256),f"wrong size {orig.size}"
               final=orig.resize((1200,628),Image.Resampling.LANCZOS)
-              target=Path("assets/images/next-afsaetning-linkedin-1200x628-v4.jpg")
+              target=Path("assets/images/next-afsaetning-linkedin-1200x628-v5.jpg")
               target.parent.mkdir(parents=True,exist_ok=True)
               final.save(target,format="JPEG",quality=94,subsampling=0,optimize=True,progressive=False)
               print("Saved:",str(target),final.size,target.stat().st_size)
