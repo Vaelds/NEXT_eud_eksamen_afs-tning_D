@@ -68,7 +68,7 @@ jobs:
                   .hero-content{
                     width:calc(100% - 84px)!important;
                     margin-inline:auto!important;
-                    padding-bottom:75px!important
+                    padding-bottom:75px!important;transform:translateY(26px)!important
                   }
                   .hero h1{
                     font-size:85px!important;max-width:650px!important;
@@ -105,12 +105,12 @@ jobs:
                   raise RuntimeError(f"Image size is {im.size}, expected 2400x1256")
               output=Path("assets/images")
               output.mkdir(parents=True,exist_ok=True)
-              full=output/"next-afsaetning-linkedin-legible-v6.png"
+              full=output/"next-afsaetning-linkedin-legible-v7.png"
               im.save(full,format="PNG",optimize=True)
               if full.stat().st_size>5_000_000:
                   raise RuntimeError("Image exceeds LinkedIn's 5 MB limit")
               sample=im.resize((650,340),Image.Resampling.LANCZOS)
-              sample.save(output/"next-afsaetning-legibility-test-v6.jpg","JPEG",quality=85,optimize=True)
+              sample.save(output/"next-afsaetning-legibility-test-v7.jpg","JPEG",quality=85,optimize=True)
               print(f"Full: {full.stat().st_size} bytes. Test thumbnail 650x340.")
           finally:
               driver.quit()
@@ -120,7 +120,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/images/next-afsaetning-linkedin-legible-v6.png assets/images/next-afsaetning-legibility-test-v6.jpg
+          git add assets/images/next-afsaetning-linkedin-legible-v7.png assets/images/next-afsaetning-legibility-test-v7.jpg
           if ! git diff --cached --quiet; then
             git commit -m "Build large readable LinkedIn card using actual website visuals"
             git push
