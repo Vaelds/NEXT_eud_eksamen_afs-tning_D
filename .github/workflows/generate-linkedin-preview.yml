@@ -1,4 +1,4 @@
-name: Build readable LinkedIn preview from real website
+name: Generate legible LinkedIn website card
 on:
   push:
     paths:
@@ -7,103 +7,121 @@ on:
 permissions:
   contents: write
 jobs:
-  screenshot:
+  card:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install screenshot tools
+      - name: Install browser and image dependencies
         run: python -m pip install selenium pillow
-      - name: Capture the actual website in LinkedIn's native image format
+      - name: Capture real homepage in high resolution and create test thumbnails
         shell: bash
         run: |
           python - <<'PY'
+          import io, time, os
           from pathlib import Path
-          import io,time
-          from PIL import Image
+          from PIL import Image, ImageFilter
           from selenium import webdriver
           from selenium.webdriver.chrome.options import Options
-          opts=Options()
-          for arg in ["--headless=new","--no-sandbox","--disable-dev-shm-usage","--hide-scrollbars","--force-color-profile=srgb"]:
-              opts.add_argument(arg)
-          browser=webdriver.Chrome(options=opts)
+
+          opts = Options()
+          for flag in ["--headless=new","--no-sandbox","--disable-dev-shm-usage","--hide-scrollbars","--force-color-profile=srgb"]:
+              opts.add_argument(flag)
+          driver = webdriver.Chrome(options=opts)
           try:
-              browser.execute_cdp_cmd("Emulation.setDeviceMetricsOverride",{
+              driver.execute_cdp_cmd("Emulation.setDeviceMetricsOverride", {
                   "width":1200,"height":628,"deviceScaleFactor":2,"mobile":False
               })
-              browser.get("https://vaelds.github.io/NEXT_eud_eksamen_afs-tning_D/")
-              browser.execute_async_script("const done=arguments[0];document.fonts.ready.then(done);")
-              browser.execute_script("""
-                const st=document.createElement('style');
-                st.textContent=`
+              driver.get("https://vaelds.github.io/NEXT_eud_eksamen_afs-tning_D/")
+              driver.execute_async_script("const done=arguments[0];document.fonts.ready.then(done)")
+              driver.execute_script("""
+                const style=document.createElement('style');
+                style.textContent=`
                   html,body{scroll-behavior:auto!important;overflow:hidden!important}
                   ::-webkit-scrollbar{display:none!important}
                   .masthead{
-                    height:84px!important;min-height:84px!important;
-                    display:grid!important;
-                    grid-template-columns:168px 1fr auto!important;
-                    padding:10px 45px!important;
-                    gap:23px!important
+                    height:78px!important;min-height:78px!important;
+                    padding:7px 37px!important;gap:19px!important;
+                    grid-template-columns:155px 1fr auto!important
                   }
-                  .brand img{width:144px!important}
-                  .masthead-meta{gap:13px!important;padding-left:18px!important}
+                  .brand img{width:150px!important}
+                  .masthead-meta{
+                    gap:11px!important;padding-left:16px!important;min-height:36px!important
+                  }
                   .masthead-meta span{font-size:12px!important}
                   .masthead-meta strong{font-size:13px!important}
-                  .masthead .header-cta{min-height:42px!important;font-size:12px!important;padding:10px 13px!important;gap:18px!important}
+                  .masthead .header-cta{
+                    min-height:45px!important;font-size:14px!important;
+                    padding:9px 15px!important;gap:17px!important
+                  }
                   .hero{
-                    height:544px!important;min-height:544px!important;max-height:544px!important;
-                    display:grid!important;align-items:center!important;padding:0!important
+                    min-height:550px!important;max-height:550px!important;
+                    height:550px!important;padding:0!important;
+                    display:grid!important;align-items:center!important
+                  }
+                  .hero-photo{
+                    transform:scale(1.16)!important;
+                    transform-origin:56% center!important
                   }
                   .hero-content{
-                    width:calc(100% - 95px)!important;
+                    width:calc(100% - 84px)!important;
                     margin-inline:auto!important;
-                    padding-bottom:54px!important;
+                    padding-bottom:75px!important
                   }
-                  .hero h1{font-size:78px!important;line-height:.89!important;max-width:670px!important}
+                  .hero h1{
+                    font-size:85px!important;max-width:650px!important;
+                    line-height:.87!important;letter-spacing:-.055em!important
+                  }
                   .hero-lead{
-                    max-width:590px!important;
-                    font-size:20px!important;
-                    line-height:1.25!important;
-                    margin-top:17px!important;
-                    letter-spacing:0!important
+                    max-width:595px!important;
+                    font-size:24px!important;line-height:1.24!important;
+                    margin-top:20px!important;letter-spacing:-.008em!important
                   }
-                  .hero-actions{margin-top:15px!important}
-                  .hero-actions .button{min-height:52px!important;min-width:200px!important;font-size:14px!important}
+                  .hero-actions{margin-top:19px!important}
+                  .hero-actions .button{
+                    min-height:55px!important;min-width:205px!important;
+                    padding:11px 19px!important;font-size:17px!important
+                  }
                   .hero-stats{
-                    bottom:0!important;min-height:80px!important;padding:0!important;
-                    grid-template-columns:260px 245px 280px minmax(0,1fr)!important
+                    min-height:94px!important;bottom:0!important;padding:0!important;
+                    grid-template-columns:225px 210px 255px minmax(0,1fr)!important
                   }
-                  .hero-stats>div{padding:17px 18px!important;gap:8px!important}
-                  .hero-stats strong{font-size:34px!important}
-                  .hero-stats span{font-size:13px!important}
-                  .hero-stats p{font-size:13px!important;padding:18px!important}
+                  .hero-stats>div{padding:20px 15px!important;gap:10px!important}
+                  .hero-stats strong{font-size:45px!important}
+                  .hero-stats span{font-size:14px!important}
+                  .hero-stats p{font-size:12px!important;padding:18px!important}
                   .hero-shape-two{display:none!important}
                 `;
-                document.head.appendChild(st);
-                document.querySelector('.hero-lead').textContent='213 spørgsmål. 13 emner. Træn fagbegreber og mundtlig eksamen.';
+                document.head.appendChild(style);
+                const intro = document.querySelector(".hero-lead");
+                if(intro) intro.textContent="213 spørgsmål fordelt på 13 emner. Træn til mundtlig eksamen.";
                 window.scrollTo(0,0);
               """)
-              time.sleep(2)
-              orig=Image.open(io.BytesIO(browser.get_screenshot_as_png())).convert("RGB")
-              assert orig.size==(2400,1256),f"wrong size {orig.size}"
-              final=orig.resize((1200,628),Image.Resampling.LANCZOS)
-              target=Path("assets/images/next-afsaetning-linkedin-1200x628-v5.jpg")
-              target.parent.mkdir(parents=True,exist_ok=True)
-              final.save(target,format="JPEG",quality=94,subsampling=0,optimize=True,progressive=False)
-              print("Saved:",str(target),final.size,target.stat().st_size)
-              assert target.stat().st_size<5_000_000
+              time.sleep(3)
+              im=Image.open(io.BytesIO(driver.get_screenshot_as_png())).convert("RGB")
+              if im.size != (2400,1256):
+                  raise RuntimeError(f"Image size is {im.size}, expected 2400x1256")
+              output=Path("assets/images")
+              output.mkdir(parents=True,exist_ok=True)
+              full=output/"next-afsaetning-linkedin-legible-v6.png"
+              im.save(full,format="PNG",optimize=True)
+              if full.stat().st_size>5_000_000:
+                  raise RuntimeError("Image exceeds LinkedIn's 5 MB limit")
+              sample=im.resize((650,340),Image.Resampling.LANCZOS)
+              sample.save(output/"next-afsaetning-legibility-test-v6.jpg","JPEG",quality=85,optimize=True)
+              print(f"Full: {full.stat().st_size} bytes. Test thumbnail 650x340.")
           finally:
-              browser.quit()
+              driver.quit()
           PY
-      - name: Commit the image
+      - name: Publish image and miniaturized QA check
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/images/next-afsaetning-linkedin-1200x628-v5.jpg
+          git add assets/images/next-afsaetning-linkedin-legible-v6.png assets/images/next-afsaetning-legibility-test-v6.jpg
           if ! git diff --cached --quiet; then
-             git commit -m "Add LinkedIn-size sharp screenshot of real NEXT homepage"
-             git push
+            git commit -m "Build large readable LinkedIn card using actual website visuals"
+            git push
           fi
