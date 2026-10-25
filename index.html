@@ -1599,37 +1599,292 @@ body{background:#f5f0e8}.masthead{position:relative}.hero{min-height:590px;heigh
 <header class="masthead"><a class="brand" href="#" id="logo"><img src="https://vaelds.github.io/next-fitnessquiz/assets/images/next-logo.png" alt="NEXT Uddannelse København"></a><div class="masthead-meta"><span>Fitnessuddannelsen</span><strong>Afsætning D · Fagbegreber</strong></div><button class="header-cta" id="header-home">Alle emner <span>↗</span></button></header>
 <main id="main-content"><div id="home"><section class="hero"><img class="hero-photo" src="https://vaelds.github.io/next-fitnessquiz/assets/images/hero-fitness.png" alt="Træning i fitnesscenter"><div class="hero-overlay"></div><div class="hero-shape hero-shape-one"></div><div class="hero-shape hero-shape-two"></div><div class="hero-content page-width"><p class="overline"><span>Quiz</span> Fitness · Afsætning D · Eksamensforberedelse</p><h1>Klar til<br><em>mundtlig</em><br>eksamen?</h1><p class="hero-lead">213 spørgsmål fordelt på 13 selvstændige emner. Øv fagbegreberne ét kapitel ad gangen, få facit med forklaring og træn et ekstra mundtligt opfølgende spørgsmål.</p><div class="hero-actions"><a class="button button-primary" href="#chapter-list">Vælg emne <span>→</span></a></div></div><div class="hero-stats page-width"><div><strong>213</strong><span>spørgsmål</span></div><div><strong>13</strong><span>emner</span></div><div><strong>01</strong><span>rigtigt svar</span></div><p>Udarbejdet til eksamensøvelse i NEXT Fitness</p></div></section><section class="page-width chapter-section" id="chapter-list"><div class="chapter-intro"><p class="overline"><span>01</span> Vælg eksamensområde</p><h2>Fra teori til<br>eksamensviden</h2><p>Alle områder i det vedlagte begrebsdokument er opdelt efter kapitel. Du kan genstarte en test eller fortsætte et andet område. Dit resultat gemmes i denne browser.</p></div><div class="chapter-grid" id="chapter-grid"></div><p class="footnote">Spørgsmålene er studiespørgsmål inspireret af en mundtlig eksamenssituation, ikke officielle eksamensspørgsmål. Regler i lovgivningskapitlet er forenklet til undervisningsformål og bør kontrolleres mod gældende lovgivning.</p></section></div>
 <section class="practice-screen page-width" id="practice" hidden><div class="practice-top"><button class="quiet-button" id="back">← Alle emner</button><div class="practice-meta" id="practice-meta"></div></div><div class="progress-track" aria-label="Fremdrift"><span id="bar"></span></div><div id="question-slot" class="exam-card"></div><div class="practice-actions"><button class="button button-primary" id="next" disabled>Næste spørgsmål <span>→</span></button><button class="quiet-button" id="reset">Begynd emnet forfra</button></div></section>
-<section class="practice-screen page-width" id="result" hidden><div class="result-panel"><p class="overline"><span>Resultat</span> Kapitel gennemført</p><h2 id="result-title"></h2><div id="result-scores" class="result-scores"></div><p id="result-summary"></p><h3>Begreber du med fordel kan repetere</h3><ol id="review" class="review-list"></ol><div class="practice-actions"><button class="button button-primary" id="retry">Prøv igen <span>→</span></button><button class="quiet-button" id="result-home">Vælg andet emne</button></div></div></section></main><footer class="page-width footer-area"><span style="display:inline-block;margin-right:1.5em">Quizversion: 25.10.2026 · V5</span>NEXT Fitness · Afsætning D · Selvstændigt undervisningsprojekt · Baseret på “Fagbegreber Afsætning V2”</footer>
+<section class="practice-screen page-width" id="result" hidden><div class="result-panel"><p class="overline" id="result-kicker"><span>Resultat</span> Kapitel gennemført</p><h2 id="result-title"></h2><div id="result-scores" class="result-scores"></div><p id="result-summary"></p><h3>Begreber du med fordel kan repetere</h3><ol id="review" class="review-list"></ol><div class="practice-actions"><button class="button button-primary" id="retry-wrong" type="button" hidden>Øv de forkerte svar <span>→</span></button><button class="quiet-button" id="retry" type="button">Prøv hele emnet igen</button><button class="quiet-button" id="result-home" type="button">Vælg andet emne</button></div></div></section></main><footer class="page-width footer-area"><span style="display:inline-block;margin-right:1.5em">Quizversion: 25.10.2026 · V6</span>NEXT Fitness · Afsætning D · Selvstændigt undervisningsprojekt · Baseret på “Fagbegreber Afsætning V2”</footer>
 <script src="quiz-answers-1.js"></script><script src="quiz-answers-2.js"></script><script>const CHAPTERS=[{"id":1,"title":"Forretningsmodeller","topics":[["Forretningsmodel","Hvordan en virksomhed skaber og indtjener værdi"],["Traditionelle forretningsmodeller","Produktion, handel og service"],["Produktionsvirksomhed","Fremstiller fysiske varer"],["Handelsvirksomhed","Indkøber varer til videresalg"],["Grossist","Sælger varer til andre virksomheder"],["Detailhandel","Sælger varer til slutforbrugere"],["Servicevirksomhed","Leverer primært tjenesteydelser"],["Digitale forretningsmodeller","Digital teknologi er central for værdiskabelsen"],["Den digitale købmand","Købmand der sælger gennem digitale kanaler"],["Webshoppen","Onlinebutik med bestilling af varer og ydelser"],["Den digitale producent","Fremstiller digitale produkter eller indhold"],["Softwareproducenten","Udvikler og sælger software"],["Den digitale platformsbygger","Skaber en platform, der forbinder brugergrupper"],["App-opfinderen","Udvikler og udbyder apps"],["Wiki-skaberen","Organiserer viden, som brugere bidrager til digitalt"],["Kombination af forretningsmodeller","Flere indtjenings- og leverancemodeller anvendes samtidigt"],["Abonnementsordninger","Kunden betaler løbende for adgang eller leverancer"]]},{"id":2,"title":"Forretningskoncept","topics":[["Forretningskoncept","Samlet beskrivelse af idé, tilbud og målgruppe"],["Idé","Grundlæggende tanke om et behov virksomheden vil opfylde"],["Vision","Det fremtidige ideal virksomheden stræber mod"],["Delmål","Mindre mål der understøtter det overordnede mål"],["Operationelle mål","Konkrete mål for den daglige drift"],["Værdier","Principper der styrer virksomhedens handlinger"],["Profil","Den identitet virksomheden ønsker at signalere"]]},{"id":3,"title":"SWOT","topics":[["SWOT","Analyse af interne styrker og svagheder og eksterne muligheder og trusler"],["Styrker","Interne positive forhold"],["Svagheder","Interne negative forhold"],["Muligheder","Eksterne forhold virksomheden kan udnytte"],["Trusler","Eksterne forhold der kan skade virksomheden"]]},{"id":4,"title":"Markeder og B2B","topics":[["Konsumentmarkedet","Private kunder køber til eget forbrug"],["Producentmarkedet","Virksomheder køber til drift og produktion"],["Købemotiver på B2B","Økonomiske og driftsmæssige grunde til indkøb"],["Købstyper på B2B","Klassifikation efter nyt køb eller gentagelse"],["Nykøb","Virksomheden køber noget nyt og undersøger alternativer"],["Modificeret genkøb","Virksomheden genbestiller med ændrede krav"],["Rutinekøb","Virksomheden gentager et velkendt indkøb"],["Købscenter","Flere deltagere har roller i en virksomheds indkøb"],["Transaktionsmarkedsføring","Fokus på det enkelte salg"],["Relationsmarkedsføring","Fokus på længerevarende kunderelationer"],["Delmarkeder","Underopdeling af det samlede marked"],["Det industrielle marked","Virksomheders indkøb til produktion"],["Mellemhandlermarkedet","Virksomheder køber for at videresælge"],["Det offentlige marked","Offentlige organisationer som købere"],["Valgkriterier","Forhold som pris, kvalitet og levering i et leverandørvalg"]]},{"id":5,"title":"Lovgivning","topics":[["Købeloven","Regulerer blandt andet levering, mangler og parternes retsmidler"],["Forbrugerkøb","Privat forbruger køber fra erhvervsdrivende"],["Handelskøb","Erhvervsdrivende køber som led i deres erhverv"],["Civilkøb","Køb der hverken er forbrugerkøb eller handelskøb"],["Rette kvalitet","Varen svarer til det aftalte"],["Væsentlige mangler","Alvorlige mangler der kan berettige ophævelse"],["Uvæsentlige mangler","Mindre mangler der normalt ikke berettiger ophævelse"],["Rette tid","Levering skal ske til aftalt tid"],["Leveringstid","Tidspunktet for overgivelse af varen"],["Rette sted","Levering skal ske på aftalt sted"],["Leveringssted","Sted hvor varen skal overgives"],["Rette pris","Prisen skal svare til aftalen"],["Afslag i prisen","Forholdsmæssig reduktion af betaling ved relevant mangel"],["Ophævelse af købet","Aftalen bringes til ophør og ydelser tilbageføres"],["Reklamationsret","Mulighed for at klage over mangel, normalt i to år ved forbrugerkøb"],["Formodningsreglen","Mangler i det første år formodes som udgangspunkt at have været til stede ved levering"],["Forbrugeraftaleloven","Regulerer blandt andet visse fjernsalgsaftaler og fortrydelse"],["Uanmodet henvendelse","Henvendelse til forbruger uden forudgående anmodning, underlagt forbud eller samtykkekrav"],["Fjernsalg","Handel uden fysisk møde under organiseret fjernsalg"],["Oplysningspligt","Pligt til at give relevante aftaleoplysninger før køb"],["Et varigt medium","Information kan opbevares og gengives uændret, eksempelvis e-mail"],["Fortrydelsesret","Ret til at træde tilbage fra visse aftaler"],["Fortrydelsesfrist","Normalt 14 dage for fjernsalg omfattet af reglerne"]]},{"id":6,"title":"Segmentering og målgrupper","topics":[["Konsumentenhed","Person eller husstand betragtet som købende enhed"],["Segmentering","Opdeling af et marked i kundegrupper"],["Segmenter","Kundegrupper med fælles karakteristika"],["Målgruppe","Det segment virksomheden vil henvende sig til"],["Segmenteringsprocessen","Fremgangsmåde for opdeling, vurdering og valg"],["Segmenteringsvariabler","Kendetegn man opdeler efter"],["Sociodemografiske variabler","Alder, indkomst, uddannelse og lignende"],["Adfærdsmæssige variabler","Købsfrekvens, loyalitet og anvendelse"],["Psykografiske variabler","Livsstil, interesser og værdier"],["Online segmenteringsvariabler","Klik, søgninger og anden digital adfærd"],["SMOK","Segmentvurdering af størrelse og vækst, bearbejdningsmulighed, omkostning og konkurrence"],["Livsstilsmodeller","Inddeling efter livsværdier og holdninger"],["Minerva-modellen","Dansk livsstilsmodel med moderne og traditionelle samt idealistiske og materialistiske værdier"]]},{"id":7,"title":"Købsadfærd på B2C","topics":[["Forbrugerens behov","Oplevet savn eller ønske der kan motivere et køb"],["Medfødte behov","Grundlæggende behov uafhængige af kulturel oplæring"],["Kulturbestemte behov","Behov præget af sociale normer og kultur"],["Effektive behov","Behov der kan blive til køb på grund af betalingsmulighed"],["Latente behov","Behov der endnu ikke er aktiveret som efterspørgsel"],["Maslows behovspyramide","Model over fem niveauer af menneskelige behov"],["Fysiske behov","Behov for eksempelvis vand og mad"],["Tryghedsbehov","Behov for sikkerhed og stabilitet"],["Sociale behov","Behov for venskab og tilhørsforhold"],["Egobehov","Behov for anerkendelse og status"],["Selvrealisering","Behov for at udvikle og udfolde sit potentiale"],["Forbrugerens købemotiver","Grunde til et bestemt forbrugsvalg"],["Rationelle købemotiver","Nytte, funktion og økonomi driver valget"],["Sociale købemotiver","Social status og tilhørsforhold driver valget"],["Bandwagon-motivet","Man køber det, mange andre køber"],["Snob-motivet","Man søger det sjældne og eksklusive"],["Veblen-motivet","Høj pris øger produktets signalværdi"],["Thrifty-motivet","Glæden ved at spare eller gøre et godt køb"],["Forbrugerens købeadfærd","Samlet mønster i hvordan forbrugeren træffer købsvalg"],["Købevaner","Indarbejdede gentagne indkøbsmønstre"],["Købsroller","Initiativtager, påvirker, beslutningstager, køber og bruger"],["Købstyper på B2C","Inddeling af indkøb efter involvering og rutine"],["Købsbeslutningsprocessen","Fra behovserkendelse over informationssøgning og vurdering til køb og efterkøb"]]},{"id":8,"title":"Konkurrence","topics":[["Konkurrencesituation","Vilkårene for rivalisering på et marked"],["Snæver konkurrence","Direkte konkurrence mellem lignende produkter"],["Bred konkurrence","Forskellige løsninger konkurrerer om samme behov"],["Konkurrencetragtmodellen","Viser konkurrence fra brede behov til nære alternativer"],["Markedsformer","Markedstyper efter antal udbydere og produktforskelle"],["Præferencer på markedet","Kundernes særlige præferencer for produkter"],["Homogent marked","Kunder oplever produkterne som ens"],["Heterogent marked","Kunder oplever betydelige forskelle"],["Konkurrenceform","Markedets struktur og konkurrencevilkår"],["Monopol","En enkelt udbyder på markedet"],["Duopol","To udbydere dominerer markedet"],["Differentieret duopol","To udbydere med forskellige opfattede produkter"],["Fuldkommen konkurrence","Mange små udbydere af ens varer uden væsentlige adgangsbarrierer"],["Monopolistisk konkurrence","Mange udbydere med differentierede produkter"],["Markedsopdeling","Inddeling af markedet efter købspotentiale"],["Potentielle marked","Alle mulige købere af produktet"],["Effektive marked","De kunder der rent faktisk køber"],["Latente marked","Kunder med et muligt men uudnyttet behov"],["Digitalisering","Digitale teknologier ændrer konkurrence og kundeadfærd"],["Markedsandel","Virksomhedens del af salget i et defineret marked"],["Konkurrentanalyse","Systematisk vurdering af rivalernes forhold"],["Konkurrentovervågning","Løbende opfølgning på konkurrenters aktiviteter"],["Markedsposition","Virksomhedens relative plads i markedet"],["Markedsleder","Den førende aktør på det definerede marked"],["Markedsudfordrer","Vil aktivt erobre andele fra lederen"],["Markedsfølger","Tilpasser sig primært konkurrenternes initiativer"],["Niche","Snævert kundesegment med særlige behov"]]},{"id":9,"title":"Produkt","topics":[["Kvalitet","Produktets opfyldelse af kundens forventninger"],["Funktionel kvalitet","Produktets evne til at løse en opgave"],["Smagsmæssig kvalitet","Kundens personlige smagsoplevelse"],["Imagemæssig kvalitet","Status og identitet forbundet med varen"],["Emballage","Indpakning der beskytter, informerer og sælger"],["Sortiment","Alle de varer virksomheden fører"],["Bredt sortiment","Mange produktgrupper"],["Smalt sortiment","Få produktgrupper"],["Dybt sortiment","Mange varianter inden for en produktgruppe"],["Fladt sortiment","Få varianter inden for produktgrupperne"],["Service","Supplerende hjælp og ydelser omkring salget"]]},{"id":10,"title":"Place og distribution","topics":[["Distributionskæden","Vejen fra producent til slutkunde"],["Produktionsvirksomhed i kæden","Den fremstiller varen"],["Engroshandelsvirksomhed i kæden","Sælger varer videre til andre forhandlere"],["Detailhandelsvirksomhed i kæden","Sælger varer til private slutkunder"],["Forbrugere i kæden","Slutleddet der køber og anvender varen"],["Mellemhandlere","Aktører mellem producent og forbruger"],["Indirekte distribution","Varer sælges gennem mellemled"],["Direkte distribution","Varer sælges uden mellemled til kunden"],["Channel marketing","Markedsføring gennem og mod salgskanaler"],["Kædetyper","Former for organisation af flere butikker"],["Egentlige kæder","Butikker har fælles ejer"],["Frivillige kæder","Selvstændige forhandlere samarbejder"],["Franchise","Selvstændig forhandler bruger andens koncept og brand"],["Hybridkæde","Flere kædeformer kombineres"],["Beliggenhedsformer","Valg af placering efter adgang og kunder"],["Parkeringsorienteret","Placering hvor bilparkering vægtes"],["Trafikorienteret","Placering hvor mange passerer forbi"],["Boligorienteret","Placering nær kundernes boliger"],["Cityorienteret","Placering i bymidten"],["Centerorienteret","Placering i et shoppingcenter"]]},{"id":11,"title":"Pris","topics":[["Omkostningsbaseret prissætning","Pris ud fra omkostning plus ønsket avance"],["Konkurrenternes pris","Prisniveau vurderes ud fra andre udbydere"],["Kundernes behov og rådighedsbeløb","Pris bestemmes med hensyn til nytte og betalingsevne"],["Psykologiske priser","Pristal vælges for at påvirke oplevelsen eksempelvis 99 kroner"],["Prismatch","Løfte om at matche andres pris under bestemte betingelser"]]},{"id":12,"title":"Promotion","topics":[["Online promotion","Markedsføring via digitale kanaler"],["Omnichannel marketing","Sammenhængende oplevelse på tværs af alle kanaler"],["Singlechannel marketing","Brug af én kanal"],["Multichannel marketing","Flere kanaler der ikke nødvendigvis er integreret"],["Crosschannel marketing","Kanaler er forbundet så kunden kan skifte mellem dem"],["Offline promotion","Markedsføring uden digitale kanaler"],["Reklamer","Betalt afsenderstyret kommunikation"],["Sales promotion","Kortsigtede salgsstimulerende tiltag"],["Public relations","Arbejdet med virksomhedens omdømme og interessentrelationer"],["Butiksindretning og vareeksponering","Placering og præsentation af varer i butikken"],["AIDA-modellen","Attention, Interest, Desire, Action"],["Attention","Fange kundens opmærksomhed"],["Interest","Skabe interesse"],["Desire","Skabe ønske om produktet"],["Action","Få kunden til at handle"],["Manipulative reklamer","Appellerer især til følelser og holdninger"],["Informative reklamer","Kommunikerer især fakta og produktegenskaber"],["Branding","Skabe tydelig identitet og associationer"],["Produktbranding","Opbygge et produkts særskilte identitet"],["Virksomhedsbranding","Opbygge hele virksomhedens image"],["Personbranding","Opbygge en persons offentlige profil"],["CSR","Virksomhedens sociale og miljømæssige ansvar"]]},{"id":13,"title":"Kundeservice og betjening","topics":[["Offline kundebetjening","Kundekontakt uden en digital butik"],["Diskbetjening","Personlig hjælp ved salgsdisk"],["Selvbetjening","Kunden betjener sig primært selv"],["Selvvalg","Kunden udvælger selv varer men kan få assistance"],["Telefonbetjening","Service ydes over telefon"],["Online kundebetjening","Service gennem digital handel og kommunikation"],["Webshoppen som kundeservice","Kundens digitale sted for køb og hjælp"],["Levering i webshoppen","Oplysning om tid, pris og leveringsmetode"],["Fortrydelsesret i webshoppen","Vejledning om omfang og brug af fortrydelsesret"],["Kommunikation i webshoppen","Let forståelige kontakt- og servicemuligheder"],["Søgbarhed i webshoppen","Kunden kan hurtigt finde varer og oplysninger"],["Sikkerhed i webshoppen","Beskyttelse af data og betaling"],["Salgstrappen","Faseopdelt model for salgsarbejdet"],["Det forberedende salgsarbejde","Forberedelse med kunde- og produktkendskab"],["Det gennemførende salgsarbejde","Kontakt, behovsafdækning og produktpræsentation"],["Det afsluttende salgsarbejde","Kundens beslutning og afslutning af handlen"],["Behandling af reklamationer","Klagen undersøges og løses ordentligt"],["Servicekoncepter","Principper for hvordan virksomheden vil levere service"],["Servicepakken","Kerneydelse plus supplerende ydelser"],["Kerneydelse","Den centrale ydelse kunden efterspørger"],["Periferiydelser","Ydelser der supplerer og understøtter kerneydelsen"],["Serviceleverancesystem","Samspil mellem kunder, frontpersonale og bagvedliggende systemer"],["Kunder i serviceleverancesystemet","Modtagere og medskabere af serviceydelsen"],["Frontpersonale","Medarbejdere i direkte kundekontakt"],["Backup-system","Interne funktioner som understøtter servicemedarbejdere"]]}];const FOLLOWUPS=[["Hvordan ville du ændre en forretningsmodel, hvis kunderne ønsker at leje et produkt frem for at eje det?","Hvad er den vigtigste økonomiske forskel mellem at fremstille varer, videresælge dem og levere tjenesteydelser?","Hvilke omkostninger og risici påtager en producent sig, som en ren handelsvirksomhed normalt undgår?","Hvordan adskiller en handelsvirksomheds værdiskabelse sig fra en produktionsvirksomheds?","Hvorfor kan en grossist være en fordel for både producent og detailhandler, selvom grossisten lægger avance oveni?","Hvad er forskellen mellem en detailhandler og en grossist med hensyn til kunder, salgsmængder og markedsføring?","Hvorfor er det vanskeligt at opbygge et lager af en serviceydelse, og hvilken betydning har det for kapacitetsstyringen?","Hvilke nye indtægtskilder og konkurrenter kan opstå, når en traditionel forretning bliver digital?","Hvordan ændrer onlinehandel kravene til lager, levering og kunderelation sammenlignet med en fysisk købmand?","Hvilke problemer kan en webshop skabe for kunden, hvis produktinformation og leveringsvilkår er uklare?","Hvordan adskiller distributionen af en digital træningsvideo sig fra distributionen af en fysisk bog?","Hvad er fordele og ulemper ved at sælge software som engangslicens i stedet for abonnement?","Hvordan kan en digital platform tjene penge på to brugergrupper uden selv at producere den ydelse, de handler med?","En gratis app får mange brugere, men næsten ingen indtægter. Hvilke to konkrete forretningsmodeller kunne udvikleren overveje?","Hvordan kan en wiki sikre troværdigheden, når det er brugerne selv, der opretter og redigerer indhold?","Hvilke fordele og interne konflikter kan opstå, når en producent både sælger gennem forhandlere og direkte til kunderne?","En abonnementstjeneste får mange nye kunder, men mister dem hurtigt igen. Hvorfor er kundefastholdelse særlig vigtig for modellen?"],["En virksomhed ændrer målgruppen, men ikke produkterne. Hvilke dele af forretningskonceptet bør den så genoverveje?","Hvordan vil du skelne mellem en forretningsidé, der beskriver et kundeproblem, og et produkt, der løser problemet?","Hvornår er en vision så ukonkret, at medarbejderne har svært ved at bruge den i praksis?","Et firma vil mindske antallet af utilfredse kunder. Hvilke delmål kan bringe det tættere på hovedmålet?","Omskriv 'vi vil have bedre kundeservice' til et målbart operationelt mål, og forklar hvordan det kan følges op.","Hvad sker der med troværdigheden, hvis en virksomheds handlinger modsiger dens erklærede værdier?","Kan en virksomhed have en stærk visuel profil, men et uklart omdømme? Forklar forskellen mellem ønsket profil og kundernes oplevelse."],["En konkurrent åbner tæt på virksomheden, samtidig med at virksomheden har stærk kundeloyalitet. Hvordan kan de to forhold kobles i en SWOT-strategi?","Hvornår bliver en virksomheds interne styrke værdiløs, fordi markedets behov ændrer sig?","En virksomhed har begrænset kapital. Hvordan kan den mindske effekten af denne svaghed uden blot at låne flere penge?","Et nyt lovkrav skaber efterspørgsel efter et særligt produkt. Hvorfor kan den samme ændring være en mulighed for én virksomhed og en trussel for en anden?","Hvordan kan en virksomhed forberede sig på en trussel, som den ikke selv kan kontrollere?"],["Hvordan ændrer kommunikationen sig, hvis en vare købes til familiens eget brug frem for til en virksomheds produktion?","Hvorfor indgår der ofte flere beslutningstagere ved et dyrt B2B-indkøb end ved et almindeligt forbrugerkøb?","Hvordan kan leveringssikkerhed veje tungere end lav indkøbspris for en produktionsvirksomhed?","Hvilke forskelle vil du forvente i informationssøgningen ved nykøb og rutinekøb i en virksomhed?","Hvilke roller og informationer bør en leverandør afdække, når kunden aldrig før har købt denne type maskine?","Hvorfor kan en leverandør miste en fast kunde ved et modificeret genkøb, selv om den tidligere løsning fungerede?","Hvilken risiko er der ved at lade rutinekøb fortsætte i årevis uden at undersøge markedet?","Hvordan kan brugeren af et produkt og den person, der godkender budgettet, have forskellige krav i et købscenter?","Hvad kan en virksomhed miste på længere sigt ved kun at fokusere på at lukke den næste handel?","En fast kunde får personlig rådgivning, men køber kun lidt ad gangen. Hvorfor kan kunden alligevel have høj værdi?","Hvorfor bør en sælger ikke behandle offentlige myndigheder, private forbrugere og industrivirksomheder som én målgruppe?","Hvordan kan et nedbrud hos en leverandør påvirke produktionen hos en industriel kunde?","Hvordan adskiller en mellemhandlers vurdering af en vare sig fra den endelige forbrugers vurdering?","Hvorfor kan et offentligt indkøb kræve en anden salgsproces end et tilsvarende privat virksomhedsindkøb?","Hvis én leverandør er billigst og en anden mest driftssikker, hvordan kan kunden opstille og vægte sine valgkriterier?"],["En køber klager over en fejl. Hvorfor er det nødvendigt først at afklare købets type og aftalevilkår?","Hvilke rettigheder kan forbrugeren ikke uden videre fraskrive sig gennem butikkens egne handelsbetingelser?","To erhvervsdrivende har aftalt særlige garantivilkår. Hvorfor kan aftalefrihed spille en større rolle her end ved forbrugerkøb?","En privatperson sælger en brugt cykel til en anden privatperson. Hvorfor gælder reglerne om forbrugerkøb ikke automatisk?","Kan en vare have en mangel, selv om den teknisk virker? Inddrag varebeskrivelse og rimelige forventninger.","Hvorfor er det ikke enhver mangel, der giver køberen ret til straks at ophæve et køb?","En vare har en ridse, som ikke påvirker funktionen. Hvilke andre beføjelser end ophævelse kan være relevante?","En ordre skulle leveres før en bestemt begivenhed. Hvorfor kan forsinkelsens betydning afhænge af aftalen og formålet?","Hvilken forskel gør det, om et leveringstidspunkt er aftalt præcist eller blot angivet som forventet?","Hvilke problemer kan opstå, hvis varerne stilles på købers adresse, men ikke på det aftalte afleveringssted?","Hvordan vil du afgøre leveringsstedet, hvis købsaftalen ikke udtrykkeligt nævner det?","En kunde er blevet opkrævet en pris, der afviger fra den accepterede ordre. Hvilken dokumentation er vigtig?","Hvad er forskellen mellem prisafslag og reparation som løsning på en mangel?","Hvad skal der som udgangspunkt ske med vare og betaling, når et køb lovligt ophæves?","Hvorfor betyder en reklamationsfrist på to år ikke, at alle fejl, som opstår i perioden, automatisk dækkes?","En fejl viser sig efter 11 måneder og en anden efter 15 måneder. Hvordan kan det påvirke bevisbyrden i et forbrugerkøb?","Hvilke typer oplysninger skal en netbutik give, før en forbruger binder sig til en aftale?","Hvad er forskellen mellem et uanmodet salgsopkald og en henvendelse til en kunde, der selv har bedt om at blive ringet op?","Hvordan adskiller fjernsalg sig fra en handel, hvor kunden blot ser varen på nettet og derefter indgår aftalen i butikken?","Hvilke problemer kan opstå, hvis en netbutik først efter betalingen oplyser om ekstra gebyrer eller binding?","Hvorfor er en besked på et websted, som sælgeren frit kan ændre, ikke altid det samme som information på et varigt medium?","Hvordan adskiller en lovbestemt fortrydelsesret sig fra butikkens frivillige returret?","Hvorfor kan starttidspunktet for fortrydelsesfristen være forskelligt ved køb af fysiske varer og tjenesteydelser?"],["Hvorfor kan to medlemmer af samme husstand påvirke et køb forskelligt, selv om kun én betaler?","Hvad risikerer virksomheden, hvis den forsøger at målrette én kampagne mod alle kunder på markedet?","Hvorfor er det ikke tilstrækkeligt, at to kunder har samme alder, for at de nødvendigvis bør tilhøre samme segment?","Hvordan kan en attraktiv målgruppe vise sig at være økonomisk urentabel at bearbejde?","Hvilke trin bør en virksomhed gennemgå, fra den opdager en mulig kundegruppe til den vælger den som målgruppe?","Hvilken begrænsning er der ved kun at segmentere efter køn og alder?","Hvordan kunne to personer med samme indkomst og alder reagere helt forskelligt på den samme reklame?","Hvad kan købsfrekvens og mærkeloyalitet fortælle, som sociodemografiske data ikke kan?","Hvordan kan en virksomheds budskab til miljøbevidste forbrugere adskille sig fra budskabet til statusorienterede forbrugere?","Hvorfor kan en kundes gentagne besøg på en produktside være et relevant signal, selv om kunden endnu ikke har købt?","Et segment er stort, men dyrt at nå og præget af stærk konkurrence. Hvordan kan SMOK bruges til at prioritere det?","Hvad er fordelen og begrænsningen ved at bruge en livsstilsmodel frem for blot at bruge befolkningsstatistik?","Hvorfor vil samme reklamemetafor ikke nødvendigvis virke på Minerva-modellens forskellige livsstilsgrupper?"],["En kunde ønsker en dyr bil for at blive respekteret. Hvorfor er bilens funktion ikke nødvendigvis det egentlige behov bag købet?","Kan reklamer skabe et grundlæggende fysisk behov, eller kan de primært påvirke måden behovet opfyldes på?","Hvordan kan et behov for bestemte mærkevarer ændre sig, når sociale normer ændrer sig?","En kunde har lyst til at købe et dyrt produkt, men ingen penge til det. Hvorfor er ønsket ikke nødvendigvis effektiv efterspørgsel?","Hvordan kan produktdemonstration og information få et latent behov til at blive et aktivt købsønske?","Hvilke begrænsninger er der ved at bruge Maslows pyramide, som om alle kunder prioriterer behov i samme rækkefølge?","Hvordan kan en reklame for et måltidsprodukt gå ud over at dække et fysisk behov og samtidig spille på identitet?","Hvorfor kan forsikring, garanti og tydelig information være vigtige for kunder med et stærkt tryghedsbehov?","Et brand tilbyder et eksklusivt medlemsfællesskab. Hvordan kan sociale behov og egobehov overlappe?","Hvordan kan en dyr mærkevare dække et egobehov, selv om den ikke fungerer bedre end en billigere vare?","Hvornår kan en uddannelse eller en krævende personlig målsætning være mere attraktiv end et statusprodukt for kunden?","Hvordan kan samme produkt opfylde forskellige behov og derfor kræve forskellige budskaber?","En køber vælger en vare på grund af garantien, mens en anden vælger den på grund af mærket. Hvordan adskiller motiverne sig?","Kan et køb være både rationelt og socialt motiveret? Forklar hvordan motiverne kan virke sammen.","Hvorfor kan popularitet øge et produkts efterspørgsel, selv når kunderne ikke har undersøgt kvaliteten?","Hvordan kan et luksusbrand miste tiltrækningskraft, hvis produktet bliver for udbredt?","Hvorfor er Veblen-motivet noget andet end blot at antage, at dyre varer altid er bedre?","En kunde vælger en vare i tilbud frem for en billigere vare til normalpris. Hvordan kan thrifty-motivet forklare valget?","Hvorfor bør en virksomhed undersøge kundens adfærd efter købet og ikke kun før købet?","Hvordan kan et brand bryde en kundes indarbejdede købsvane uden at sænke prisen?","I en familie påvirker barnet valget af streamingtjeneste, mens forælderen betaler. Hvorfor er køber og påvirker ikke samme rolle?","Hvordan varierer behovet for informationssøgning mellem et rutinekøb og et kompliceret førstegangskøb?","Hvordan kan utilfredshed efter købet påvirke både fremtidige køb og kundens anbefalinger til andre?"],["Hvorfor kan to virksomheder konkurrere om samme kunders penge, selv om de sælger forskellige produkter?","En virksomhed sænker sine priser. Hvorfor vil effekten være anderledes på nære konkurrenter end på mere fjerne alternativer?","Når en kunde vælger mellem biograf, restaurant og koncert, hvad er det overordnede behov, virksomhederne konkurrerer om?","Hvilke ekstra konkurrenter opdager man, når man bevæger sig udad i konkurrencetragtmodellen?","Hvorfor er antallet af udbydere alene ikke nok til at bestemme markedets konkurrenceform?","To produkter koster det samme, men kunderne foretrækker konsekvent det ene. Hvordan kan præferencen påvirke priskonkurrencen?","Hvorfor vil stærk konkurrence på et homogent marked ofte presse virksomhederne til at konkurrere på pris?","Hvordan kan emballage, service og omdømme gøre et marked mere heterogent?","Hvilken betydning har adgangsbarrierer for en ny virksomheds mulighed for at konkurrere?","Hvordan kan et monopol have både økonomiske fordele og ulemper for forbrugerne?","Hvorfor må to dominerende udbydere ofte tage højde for hinandens reaktioner, før de ændrer prisen?","Hvordan kan to dominerende virksomheder undgå ren priskonkurrence ved at differentiere deres tilbud?","Hvorfor kan en enkelt virksomhed i et marked med fuldkommen konkurrence normalt ikke hæve prisen væsentligt over markedsprisen?","Hvordan kan en kaffebar skabe kundeloyalitet på et marked med mange næsten ens alternativer?","Hvorfor er det nyttigt at skelne mellem faktiske købere og personer, som endnu ikke køber?","En virksomhed vil øge sin markedsandel. Hvorfor er et større effektivt marked ikke automatisk det samme som en større markedsandel?","Hvordan kan et marked være stort i teorien, men lille i faktisk omsætning?","Hvad skal der til, før en kunde med et latent behov bliver en del af det effektive marked?","Hvordan kan en digital platform ændre et tidligere lokalt marked til international konkurrence?","En virksomheds salg vokser med 10 procent, men dens markedsandel falder. Hvordan kan begge dele være rigtige?","Hvorfor er det utilstrækkeligt kun at sammenligne konkurrenternes priser i en konkurrentanalyse?","Hvordan kan konkurrentovervågning være lovlig og systematisk uden at blive industriel spionage?","Hvordan kan en nichevirksomhed have en stærk position, selv om dens samlede markedsandel er lille?","Hvorfor har en markedsleder ofte noget at forsvare, som en ny udfordrer ikke har?","Hvilke risici løber en markedsudfordrer ved at indlede en priskrig mod markedslederen?","Hvordan kan en markedsfølger konkurrere uden at forsøge at være først med nye produkter?","En lille virksomhed betjener en meget snæver målgruppe. Hvornår er nichespecialisering en styrke, og hvornår bliver den en risiko?"],["Et produkt fungerer upåklageligt, men kunderne opfatter det som umoderne. Hvilke kvalitetsdimensioner kan forklare deres vurdering?","Hvordan kan du måle en vares funktionelle kvalitet uden at spørge kunden, om designet er flot?","Hvorfor kan to personer være uenige om en vares smagsmæssige kvalitet, selv om produktet er identisk?","Hvad kan der ske med en vares imagemæssige kvalitet, hvis mærket bliver forbundet med en offentlig skandale?","En fødevareemballage ser eksklusiv ud, men er svær at åbne og genlukke. Hvilke konflikter kan der være mellem emballagens funktioner?","En butik vil tiltrække både mange forskellige kundetyper og specialister. Hvordan kan sortimentsbredde og -dybde kombineres?","Hvorfor kan et meget bredt sortiment øge lageromkostningerne og samtidig tiltrække flere kunder?","Hvilke muligheder og risici har en specialbutik, der bevidst fører et smalt sortiment?","En skobutik har 40 løbeskomodeller, men kun én kategori sko. Hvordan vurderer du dens sortimentsbredde og -dybde?","Hvornår kan et fladt sortiment gøre købsbeslutningen nemmere, og hvornår risikerer butikken at miste salg?","Hvorfor kan god rådgivning og nem reklamationshåndtering gøre kunder villige til at betale mere for samme vare?"],["En producent kan enten sælge direkte på nettet eller gennem grossist og butik. Hvilke konsekvenser får valget for kontrol, omkostninger og kundekontakt?","Hvad mister en producent af markedsindsigt, når den alene sælger gennem mellemhandlere?","Hvorfor kan en grossist gøre det billigere for mange små detailhandlere at købe ind?","Hvordan adskiller detailhandlerens opgaver over for privatkunder sig fra grossistens opgaver over for forhandlere?","Hvorfor bør antallet og placeringen af slutbrugere have betydning for valg af distributionskanal?","Hvilke risici overtager en producent, hvis den afskaffer mellemhandlerne og selv står for levering og returvarer?","Hvornår kan indirekte distribution være bedre end direkte salg, selv om virksomheden må afgive en del af avancen?","Hvordan kan direkte distribution skabe konflikt med forhandlere, der også sælger producentens varer?","En producent lancerer et nyt produkt. Hvilke incitamenter kan få butikkerne til at fremhæve netop dette produkt?","Hvilke spørgsmål om ejerskab og beslutningsret skal du undersøge, før du bestemmer en kædes type?","Hvordan kan en centralt ejet kæde lettere ensrette priser, indretning og kampagner end uafhængige butikker?","Hvordan kan en frivillig kæde opnå stordriftsfordele uden at butikkerne får samme ejer?","Hvorfor kan en franchisetager opleve både tryghed og begrænsninger ved at følge et etableret koncept?","Hvilke ledelsesmæssige udfordringer kan en hybridkæde få, når nogle butikker er egne, og andre er franchisedrevne?","Hvordan kan en forkert beliggenhed svække en ellers god forretningsidé?","En møbelbutik sælger store tunge varer. Hvorfor vil parkeringsorienteret beliggenhed typisk være mere relevant end for en kiosk?","Hvorfor vil en kiosk ved en station ofte lægge særlig vægt på hurtige og spontane køb?","Et supermarked placeres tæt på mange boliger. Hvordan kan lokal kundeloyalitet få betydning for omsætningen?","Hvilke fordele og ulemper kan en dyr placering i en gågade give en modebutik?","Hvordan kan nabobutikkerne i et shoppingcenter både skabe flere kunder og øge konkurrencen?"],["Hvilken risiko opstår, hvis en virksomhed udelukkende tager udgangspunkt i egne omkostninger og ignorerer kundernes betalingsvillighed?","Hvornår kan det være uhensigtsmæssigt at følge en konkurrents prisnedsættelse?","Hvorfor kan en billigere vare være svær at sælge, hvis kunderne forbinder lav pris med lav kvalitet?","Kan en psykologisk pris gøre en vare mere attraktiv uden at ændre dens reelle værdi? Forklar mekanismen.","Hvilke betingelser bør en butik tydeligt oplyse, så et løfte om prismatch ikke bliver vildledende?"],["Hvordan kan en virksomhed skelne mellem stor rækkevidde og en digital kampagne, der faktisk skaber salg?","Hvorfor er det ikke tilstrækkeligt at være til stede på mange kanaler for at tilbyde ægte omnichannel?","En forretning kommunikerer udelukkende via Instagram. Hvilke kunder risikerer den at overse, og hvilke ressourcer sparer den?","Hvad er forskellen på at bruge flere uafhængige salgskanaler og at samordne dem med fælles kundeoplysninger?","En kunde køber online og returnerer i butik. Hvorfor kræver det mere koordinering end blot at drive to separate kanaler?","Et lokalt håndværkerfirma vælger avisannoncer og messer. Hvorfor kan offline promotion være mere relevant end en national digital kampagne?","Hvordan vil du skelne mellem et reklamebudskabs afsender, målgruppe og ønskede handling?","Hvorfor kan en salgsfremmende rabat løfte omsætningen på kort sigt, men skade indtjeningen på længere sigt?","Hvorfor kan positiv presseomtale virke mere troværdig end en betalt annonce, og hvorfor kan virksomheden ikke kontrollere omtalen fuldt ud?","Hvorfor placeres basisvarer og impulskøbsvarer ofte forskellige steder i en butik?","En reklame skaber opmærksomhed, men ingen køb. Hvordan kan AIDA hjælpe med at finde det svage led i kommunikationen?","En annonce bliver ikke bemærket. Hvilke grafiske virkemidler kan skabe opmærksomhed uden at gøre budskabet uklart?","En kunde har set reklamen, men er ikke interesseret. Hvilken relevant information kunne ændre det?","En reklame forklarer produktets funktioner, men skaber intet ønske om at eje det. Hvordan kan afsenderen arbejde med kundens behov?","En reklame har skabt lyst til at købe, men der mangler pris og bestillingsmulighed. Hvad mangler der i sidste AIDA-fase?","Hvordan kan en følelsesladet reklame påvirke os uden at give nye oplysninger om produktets funktion?","Hvornår er faktuelle oplysninger om pris, garanti og specifikationer mere overbevisende end en følelsesbetonet fortælling?","Hvordan kan et stærkt brand mindske kundernes fokus på pris?","Hvorfor kan ét produkt i en virksomheds sortiment have en anden brandidentitet end virksomhedens øvrige varer?","Et produkt får dårlig omtale. Under hvilke omstændigheder kan det skade virksomhedens samlede brand?","Hvad sker der med en virksomheds troværdighed, hvis dens markedsføring afhænger af en frontperson, som får alvorlig negativ omtale?","Hvordan kan du skelne mellem dokumenterede CSR-indsatser og greenwashing i en reklame?"],["Hvilke situationer egner sig særligt godt til personlig betjening frem for digital selvbetjening?","En kunde kan se varen på hylden, men kender ikke dens anvendelse. Hvad bør en medarbejder afklare før anbefalingen ved disken?","Hvilke fordele giver selvbetjening virksomheden, og hvilke kundegrupper kan opleve ulemper?","Hvad er forskellen mellem, at kunden frit vælger på hylderne, og at vedkommende selv udfører hele betalingen og servicen?","Hvordan bør en medarbejder håndtere en reklamation pr. telefon, når kunden hverken kan vise varen eller dokumentationen fysisk?","Hvordan kan en virksomhed kombinere chatbot og menneskelig hjælp uden at efterlade kunder med komplicerede problemer?","Hvorfor skal information om binding og opsigelse være let at finde før en kunde bestiller online?","En webshop lover levering om to dage, men kan ikke overholde det. Hvordan kan tydelig kommunikation begrænse utilfredsheden?","Hvilken forskel er der på den lovbestemte fortrydelsesret og en webshops ekstra frivillige returordning?","Hvornår er automatiske standardsvar en hjælp for kunder, og hvornår bliver de et serviceproblem?","Hvordan kan dårlig søgefunktion i en webshop føre til tabt omsætning, selv hvis produkterne er konkurrencedygtige?","Hvorfor er datasikkerhed både et teknisk spørgsmål og et spørgsmål om kundernes tillid?","Hvilke konsekvenser kan det få, hvis sælgeren forsøger at afslutte salget før at have afdækket kundens behov?","Hvordan påvirker produktkendskab og forberedelse kvaliteten af sælgerens spørgsmål til kunden?","Hvordan kan en sælger skelne mellem kundens udtrykte ønske og det egentlige behov under salgssamtalen?","En kunde tøver efter at have fået et relevant tilbud. Hvordan kan sælgeren afklare indvendingen uden at presse kunden?","Hvorfor bør en medarbejder først undersøge reklamationens fakta i stedet for straks at afvise kundens klage?","Hvordan kan en virksomheds servicekoncept blive mindre troværdigt, hvis medarbejderne ikke har tid eller kompetencer til at opfylde det?","Hvordan kan to hoteller sælge samme kerneydelse, men adskille sig gennem deres servicepakker?","En restaurant tilbyder mad og servering. Hvilke dele af oplevelsen vil du betragte som kerneydelse, og hvorfor?","Kan gratis levering og udvidet kundeservice få kunder til at vælge en dyrere webshop? Forklar hvordan periferiydelser skaber værdi.","Hvordan kan fejl i et internt bookingsystem ødelægge kundens oplevelse, selv når medarbejderne er venlige?","Hvorfor afhænger kvaliteten af en frisørydelse også af kundens egne oplysninger og medvirken?","Hvilke beslutninger bør frontpersonale selv kunne træffe, når en utilfreds kunde kræver hjælp med det samme?","En butik lover samme-dagslevering, men lagerstyringen er mangelfuld. Hvordan kan backup-systemet undergrave frontpersonalets service?"]];const KEY="next-afsaetning-d-v1";
-const $=id=>document.getElementById(id);let current=-1,index=0,order=[],answers=[],selected=null,subquizSelected=null;
-const contexts=["Til en mundtlig eksamen beder censor dig analysere en fitnessvirksomhed.","Forestil dig, at du rådgiver en virksomhed på fitnessmarkedet.","En virksomhed vil træffe et vigtigt valg. Du skal bruge afsætningsteorien.","Censor viser dig en tænkt case fra en butik eller en servicevirksomhed."];
-function shuffle(a){for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-function safeGet(){try{return JSON.parse(localStorage.getItem(KEY)||"{}")}catch{return {}}}
-function saveResult(id,score,total){try{const p=safeGet();p[id]={score,total,time:Date.now()};localStorage.setItem(KEY,JSON.stringify(p))}catch{}}
-function renderHome(){const p=safeGet();$("chapter-grid").replaceChildren();CHAPTERS.forEach((c,i)=>{let box=document.createElement("article");box.className="chapter-card";const saved=p[i];box.innerHTML='<span class="chapter-num">KAPITEL '+String(i+1).padStart(2,"0")+'</span><h3>'+c.title+'</h3><p>'+c.topics.length+' mundtlige eksamensspørgsmål</p>'+(saved?'<div class="mini-progress" aria-label="Seneste resultat"><span style="width:'+Math.round(saved.score/saved.total*100)+'%"></span></div><small>Senest: '+saved.score+' af '+saved.total+' rigtige</small>':"");let b=document.createElement("button");b.className="button button-primary";b.textContent="Start emnet  →";b.addEventListener("click",()=>start(i));box.append(b);$("chapter-grid").append(box)})}
-function screen(id){for(const k of ["home","practice","result"])$(k).hidden=k!==id;window.scrollTo({top:0,behavior:"instant"})}
-function start(i){current=i;index=0;answers=[];order=shuffle(CHAPTERS[i].topics.map((_,j)=>j));screen("practice");showQuestion()}
-function quizOptions(ch,termIndex){const pool=ch.topics.map((t,i)=>({label:t[1],idx:i})).filter(x=>x.idx!==termIndex&&x.label!==ch.topics[termIndex][1]);shuffle(pool);return shuffle([{label:ch.topics[termIndex][1],idx:termIndex},...pool.slice(0,2)])}
-function showQuestion(){selected=null;subquizSelected=null;const c=CHAPTERS[current],t=c.topics[order[index]];$("practice-meta").textContent=c.title+" · "+(index+1)+" af "+order.length;$("bar").style.width=(index/order.length*100)+"%";$("next").disabled=true;$("next").innerHTML=index===order.length-1?"Vis resultat →":"Næste spørgsmål →";const slot=$("question-slot");slot.replaceChildren();const over=document.createElement("p");over.className="overline";over.textContent="Mundtligt spørgsmål · Kapitel "+(current+1);slot.append(over);const caseText=document.createElement("p");caseText.className="case";caseText.textContent=contexts[(index+current)%contexts.length];slot.append(caseText);const heading=document.createElement("h2");heading.textContent="Hvordan vil du forklare begrebet “"+t[0]+"”, og hvilken betydning kan det have i praksis?";slot.append(heading);const intro=document.createElement("p");intro.textContent="Vælg den fagligt mest præcise forklaring. Prøv derefter at formulere svaret med dine egne ord.";slot.append(intro);const opts=document.createElement("div");opts.className="choices";const values=quizOptions(c,order[index]);values.forEach((opt,i)=>{let button=document.createElement("button");button.className="choice";button.dataset.correct=String(opt.idx===order[index]);button.innerHTML='<strong>'+String.fromCharCode(65+i)+'.</strong> ';let label=document.createElement("span");label.textContent=opt.label;button.append(label);button.onclick=()=>choose(button,t);opts.append(button)});slot.append(opts);let fb=document.createElement("div");fb.className="feedback";fb.id="feedback";fb.hidden=true;slot.append(fb)}
-function choose(button,t){if(selected!==null)return;selected=button.dataset.correct==="true";answers.push({term:t[0],correct:selected});document.querySelectorAll(".choice").forEach(b=>{b.disabled=true;if(b.dataset.correct==="true")b.classList.add("correct");else if(b===button)b.classList.add("wrong")});const fb=$("feedback");fb.hidden=false;fb.replaceChildren();let h=document.createElement("h3");h.textContent=selected?"Rigtigt svar":"Ikke helt. Her er den præcise forklaring.";fb.append(h);let p=document.createElement("p");p.innerHTML="<strong>Faglig forklaring:</strong> ";p.append(document.createTextNode(t[1]+"."));fb.append(p);let oral=document.createElement("div");oral.className="oral-box";oral.innerHTML="<strong>Opfølgende eksamensspørgsmål</strong>";let oralQuestion=document.createElement("p");oralQuestion.textContent=FOLLOWUPS[current][order[index]];oral.append(oralQuestion);fb.append(oral);renderSubquiz(oral,t);$("next").disabled=true}
-function renderSubquiz(oral,t){
- const topicIndex=order[index], raw=window.SUBQUIZ_DATA?.[current]?.[topicIndex];
- if(!raw || raw.length!==2){const p=document.createElement("p");p.textContent="Underspørgsmålet kunne ikke indlæses.";oral.append(p);$("next").disabled=false;return}
- const box=document.createElement("section");box.className="subquiz";
- const title=document.createElement("h4");title.textContent="Underspørgsmål · vælg ét af to svar";box.append(title);
- const explain=document.createElement("p");explain.className="subquiz-intro";
- explain.textContent=current<4?"Hvilket svar giver den mest præcise faglige begrundelse for opfølgningsspørgsmålet?":"Hvilket svar er den bedste faglige besvarelse af det opfølgende eksamensspørgsmål?";
- box.append(explain);
- const choices=document.createElement("div");choices.className="subquiz-choices";
- const random=shuffle(raw.map((label,i)=>({label,correct:i===0})));
- random.forEach((option,i)=>{const b=document.createElement("button");b.type="button";b.className="subquiz-choice";b.dataset.correct=String(option.correct);const tag=document.createElement("strong");tag.textContent=String.fromCharCode(65+i)+".";const span=document.createElement("span");span.textContent=option.label;b.append(tag,span);
- b.onclick=()=>{if(subquizSelected!==null)return;subquizSelected=option.correct;answers[answers.length-1].followupCorrect=option.correct;
- choices.querySelectorAll("button").forEach(el=>{el.disabled=true;if(el.dataset.correct==="true")el.classList.add("correct");else if(el===b)el.classList.add("wrong")});
- const feedback=document.createElement("p");feedback.className="subquiz-answer";feedback.textContent=(option.correct?"Rigtigt. ":"Ikke helt. ")+(current<4?"Faglig begrundelse: ":"Det relevante fagbegreb: ")+raw[0]+".";
- box.append(feedback);$("next").disabled=false};choices.append(b)});
- box.append(choices);oral.append(box)
+const $ = id => document.getElementById(id);
+let current = -1, index = 0, tasks = [], answers = [], mode = "full";
+const contexts = [
+  "Til en mundtlig eksamen beder censor dig analysere en fitnessvirksomhed.",
+  "Forestil dig, at du rådgiver en virksomhed på fitnessmarkedet.",
+  "En virksomhed vil træffe et vigtigt valg. Du skal bruge afsætningsteorien.",
+  "Censor viser dig en tænkt case fra en butik eller en servicevirksomhed."
+];
+function shuffle(items) {
+  for (let i = items.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [items[i], items[j]] = [items[j], items[i]];
+  }
+  return items;
 }
-function next(){if(selected===null)return;if(index<order.length-1){index++;showQuestion();document.getElementById("practice").scrollIntoView()}else finish()}
-function finish(){const c=CHAPTERS[current],good=answers.filter(x=>x.correct).length,followgood=answers.filter(x=>x.followupCorrect).length;saveResult(current,good,answers.length);$("result-title").textContent=c.title;$("result-scores").innerHTML='<div><strong>'+good+'/'+answers.length+'</strong>Fagbegreber</div><div><strong>'+followgood+'/'+answers.length+'</strong>Underspørgsmål</div><div><strong>'+Math.round((good+followgood)/(answers.length*2)*100)+' %</strong>Samlet resultat</div>';$("result-summary").textContent="Brug den mundtlige forklaring til at træne videre. En god eksamensbesvarelse viser både, at du kan definere et begreb, forklare det og anvende det i en konkret situation.";$("review").replaceChildren();const wrong=answers.filter(x=>!x.correct || !x.followupCorrect);if(!wrong.length){let li=document.createElement("li");li.textContent="Alle begreber blev besvaret korrekt. Øv dig i at forklare dem uden svarmuligheder."; $("review").append(li)}else wrong.forEach(x=>{const li=document.createElement("li");li.textContent=x.term;$("review").append(li)});$("bar").style.width="100%";screen("result")}
-function home(){renderHome();screen("home")}
-$("next").onclick=next;$("back").onclick=home;$("header-home").onclick=home;$("logo").onclick=e=>{e.preventDefault();home()};$("reset").onclick=()=>start(current);$("retry").onclick=()=>start(current);$("result-home").onclick=home;renderHome();</script></body></html>
+function safeGet() {
+  try { return JSON.parse(localStorage.getItem(KEY) || "{}"); }
+  catch { return {}; }
+}
+function saveResult(id, score, total) {
+  try {
+    const saved = safeGet();
+    saved[id] = {score, total, time: Date.now()};
+    localStorage.setItem(KEY, JSON.stringify(saved));
+  } catch {}
+}
+function renderHome() {
+  const saved = safeGet();
+  $("chapter-grid").replaceChildren();
+  CHAPTERS.forEach((chapter, i) => {
+    const box = document.createElement("article");
+    box.className = "chapter-card";
+    const previous = saved[i];
+    box.innerHTML = '<span class="chapter-num">KAPITEL ' + String(i+1).padStart(2,"0") +
+      '</span><h3>' + chapter.title + '</h3><p>' + chapter.topics.length + ' mundtlige eksamensspørgsmål</p>' +
+      (previous ? '<div class="mini-progress" aria-label="Seneste resultat"><span style="width:' +
+      Math.round(previous.score / previous.total * 100) + '%"></span></div><small>Senest: ' +
+      previous.score + ' af ' + previous.total + ' rigtige</small>' : '');
+    const button = document.createElement("button");
+    button.className = "button button-primary";
+    button.textContent = "Start emnet  →";
+    button.addEventListener("click", () => start(i));
+    box.append(button);
+    $("chapter-grid").append(box);
+  });
+}
+function screen(id) {
+  for (const name of ["home","practice","result"]) $(name).hidden = name !== id;
+  window.scrollTo({top:0, behavior:"instant"});
+}
+function beginTasks(chapterIndex, questionTasks, isRetest) {
+  current = chapterIndex;
+  mode = isRetest ? "retest" : "full";
+  tasks = shuffle(questionTasks.map(t => ({topicIndex:t.topicIndex, main:!!t.main, followup:!!t.followup})));
+  index = 0;
+  answers = [];
+  $("reset").textContent = isRetest ? "Start ekstratesten forfra" : "Begynd emnet forfra";
+  screen("practice");
+  showQuestion();
+}
+function start(chapterIndex) {
+  beginTasks(chapterIndex, CHAPTERS[chapterIndex].topics.map((_,topicIndex) => ({
+    topicIndex, main:true, followup:true
+  })), false);
+}
+function quizOptions(chapter, topicIndex) {
+  const pool = chapter.topics.map((topic,i) => ({label:topic[1],idx:i}))
+    .filter(option => option.idx !== topicIndex && option.label !== chapter.topics[topicIndex][1]);
+  shuffle(pool);
+  return shuffle([{label:chapter.topics[topicIndex][1],idx:topicIndex}, ...pool.slice(0,2)]);
+}
+function showQuestion() {
+  const job = tasks[index];
+  const chapter = CHAPTERS[current];
+  const topic = chapter.topics[job.topicIndex];
+  answers[index] = {topicIndex:job.topicIndex, term:topic[0], mainCorrect:null, followupCorrect:null};
+  $("practice-meta").textContent = (mode === "retest" ? "Ekstratest · " : "") +
+    chapter.title + " · " + (index+1) + " af " + tasks.length;
+  $("bar").style.width = index / tasks.length * 100 + "%";
+  $("next").disabled = true;
+  $("next").textContent = index === tasks.length - 1 ? "Vis resultat →" : "Næste spørgsmål →";
+  const slot = $("question-slot");
+  slot.replaceChildren();
+  const overline = document.createElement("p");
+  overline.className = "overline";
+  overline.textContent = (mode === "retest" ? "Gentag det forkerte" : "Mundtligt spørgsmål") +
+    " · Kapitel " + (current+1);
+  slot.append(overline);
+  if (!job.main) {
+    const label = document.createElement("h2");
+    label.textContent = "Opfølgende eksamensspørgsmål";
+    slot.append(label);
+    renderFollowup(slot, job.topicIndex, true);
+    return;
+  }
+  const caseText = document.createElement("p");
+  caseText.className = "case";
+  caseText.textContent = contexts[(index+current) % contexts.length];
+  slot.append(caseText);
+  const heading = document.createElement("h2");
+  heading.textContent = "Hvordan vil du forklare begrebet “" + topic[0] + "”, og hvilken betydning kan det have i praksis?";
+  slot.append(heading);
+  const intro = document.createElement("p");
+  intro.textContent = "Vælg den fagligt mest præcise forklaring. Prøv derefter at formulere svaret med dine egne ord.";
+  slot.append(intro);
+  const options = document.createElement("div");
+  options.className = "choices";
+  quizOptions(chapter,job.topicIndex).forEach((option,i) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "choice";
+    button.dataset.correct = String(option.idx === job.topicIndex);
+    const letter = document.createElement("strong");
+    letter.textContent = String.fromCharCode(65+i) + ".";
+    const name = document.createElement("span");
+    name.textContent = option.label;
+    button.append(letter,name);
+    button.onclick = () => chooseMain(button,job.topicIndex);
+    options.append(button);
+  });
+  slot.append(options);
+  const feedback = document.createElement("div");
+  feedback.className = "feedback";
+  feedback.id = "feedback";
+  feedback.hidden = true;
+  slot.append(feedback);
+}
+function updateNext() {
+  const job = tasks[index], result = answers[index];
+  $("next").disabled = (job.main && result.mainCorrect === null) ||
+    (job.followup && result.followupCorrect === null);
+}
+function chooseMain(button,topicIndex) {
+  const result = answers[index];
+  if (result.mainCorrect !== null) return;
+  const correct = button.dataset.correct === "true";
+  result.mainCorrect = correct;
+  document.querySelectorAll("#question-slot .choice").forEach(b => {
+    b.disabled = true;
+    if (b.dataset.correct === "true") b.classList.add("correct");
+    else if (b === button) b.classList.add("wrong");
+  });
+  const feedback = $("feedback");
+  feedback.hidden = false;
+  feedback.replaceChildren();
+  const heading = document.createElement("h3");
+  heading.textContent = correct ? "Rigtigt svar" : "Ikke helt. Her er den præcise forklaring.";
+  feedback.append(heading);
+  const explanation = document.createElement("p");
+  const bold = document.createElement("strong");
+  bold.textContent = "Faglig forklaring: ";
+  explanation.append(bold, document.createTextNode(CHAPTERS[current].topics[topicIndex][1] + "."));
+  feedback.append(explanation);
+  if (tasks[index].followup) renderFollowup(feedback,topicIndex,false);
+  updateNext();
+}
+function renderFollowup(parent,topicIndex,standalone) {
+  const oral = document.createElement("div");
+  oral.className = "oral-box";
+  const title = document.createElement("strong");
+  title.textContent = standalone ? "Uddybende eksamensspørgsmål" : "Opfølgende eksamensspørgsmål";
+  const question = document.createElement("p");
+  question.textContent = FOLLOWUPS[current][topicIndex];
+  oral.append(title,question);
+  parent.append(oral);
+  renderSubquiz(oral,topicIndex);
+}
+function renderSubquiz(oral,topicIndex) {
+  const raw = window.SUBQUIZ_DATA?.[current]?.[topicIndex];
+  if (!raw || raw.length !== 2) {
+    const warning = document.createElement("p");
+    warning.textContent = "Underspørgsmålet kunne ikke indlæses.";
+    oral.append(warning);
+    answers[index].followupCorrect = false;
+    updateNext();
+    return;
+  }
+  const section = document.createElement("section");
+  section.className = "subquiz";
+  const title = document.createElement("h4");
+  title.textContent = "Underspørgsmål · vælg ét af to svar";
+  section.append(title);
+  const explanation = document.createElement("p");
+  explanation.className = "subquiz-intro";
+  explanation.textContent = "Hvilket svar er den bedste faglige besvarelse af eksamensspørgsmålet?";
+  section.append(explanation);
+  const choices = document.createElement("div");
+  choices.className = "subquiz-choices";
+  shuffle(raw.map((label,i) => ({label,correct:i===0}))).forEach((option,i) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "subquiz-choice";
+    button.dataset.correct = String(option.correct);
+    const letter = document.createElement("strong");
+    letter.textContent = String.fromCharCode(65+i) + ".";
+    const label = document.createElement("span");
+    label.textContent = option.label;
+    button.append(letter,label);
+    button.onclick = () => {
+      if (answers[index].followupCorrect !== null) return;
+      answers[index].followupCorrect = option.correct;
+      choices.querySelectorAll("button").forEach(b => {
+        b.disabled = true;
+        if (b.dataset.correct === "true") b.classList.add("correct");
+        else if (b === button) b.classList.add("wrong");
+      });
+      const feedback = document.createElement("p");
+      feedback.className = "subquiz-answer";
+      feedback.textContent = (option.correct ? "Rigtigt. " : "Ikke helt. ") +
+        "Faglig begrundelse: " + raw[0] + ".";
+      section.append(feedback);
+      updateNext();
+    };
+    choices.append(button);
+  });
+  section.append(choices);
+  oral.append(section);
+}
+function next() {
+  if ($("next").disabled) return;
+  if (index < tasks.length - 1) {
+    index++;
+    showQuestion();
+    $("practice").scrollIntoView();
+  } else finish();
+}
+function wrongTasks() {
+  return answers.map((answer,i) => ({
+    topicIndex: answer.topicIndex,
+    main: !!tasks[i].main && answer.mainCorrect !== true,
+    followup: !!tasks[i].followup && answer.followupCorrect !== true
+  })).filter(t => t.main || t.followup);
+}
+function startWrong() {
+  const wrong = wrongTasks();
+  if (wrong.length) beginTasks(current,wrong,true);
+}
+function finish() {
+  const chapter = CHAPTERS[current];
+  const mainTotal = tasks.filter(t=>t.main).length;
+  const followTotal = tasks.filter(t=>t.followup).length;
+  const mainCorrect = answers.filter(a=>a.mainCorrect===true).length;
+  const followCorrect = answers.filter(a=>a.followupCorrect===true).length;
+  const total = mainTotal + followTotal;
+  const correct = mainCorrect + followCorrect;
+  const wrong = wrongTasks();
+  const wrongCount = total - correct;
+  if (mode === "full") saveResult(current,mainCorrect,mainTotal);
+  $("result-kicker").innerHTML = mode === "retest"
+    ? '<span>Ekstratest</span> Repetition gennemført'
+    : '<span>Resultat</span> Kapitel gennemført';
+  $("result-title").textContent = chapter.title;
+  $("result-scores").innerHTML =
+    (mainTotal ? '<div><strong>' + mainCorrect + '/' + mainTotal + '</strong>Fagbegreber</div>' : '') +
+    (followTotal ? '<div><strong>' + followCorrect + '/' + followTotal + '</strong>Underspørgsmål</div>' : '') +
+    '<div><strong>' + Math.round(correct/total*100) + ' %</strong>' +
+    (mode === "retest" ? 'Resultat af ekstratest' : 'Samlet resultat') + '</div>';
+  $("result-summary").textContent = mode === "retest"
+    ? "Her er resultatet af din ekstratest. Kun de tidligere forkerte svar indgik."
+    : "En god mundtlig eksamensbesvarelse viser, at du kan definere, forklare og anvende begreberne. Du kan vælge at øve kun dine forkerte svar.";
+  $("review").replaceChildren();
+  if (!wrong.length) {
+    const item = document.createElement("li");
+    item.textContent = "Alle spørgsmål i denne test blev besvaret korrekt.";
+    $("review").append(item);
+  } else wrong.forEach(t => {
+    const item = document.createElement("li");
+    item.textContent = chapter.topics[t.topicIndex][0] + " (" +
+      (t.main && t.followup ? "begge spørgsmål" : t.main ? "fagbegreb" : "underspørgsmål") + ")";
+    $("review").append(item);
+  });
+  const repeatButton = $("retry-wrong");
+  repeatButton.hidden = wrongCount === 0;
+  repeatButton.textContent = "Øv de " + wrongCount + " forkerte svar →";
+  $("bar").style.width = "100%";
+  screen("result");
+}
+function home() {renderHome();screen("home");}
+$("next").onclick = next;
+$("back").onclick = home;
+$("header-home").onclick = home;
+$("logo").onclick = event => {event.preventDefault();home();};
+$("reset").onclick = () => beginTasks(current,tasks,mode==="retest");
+$("retry").onclick = () => start(current);
+$("retry-wrong").onclick = startWrong;
+$("result-home").onclick = home;
+renderHome();</script></body></html>
